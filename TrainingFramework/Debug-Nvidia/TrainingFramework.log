@@ -1,21 +1,17 @@
-﻿  GSMenu.cpp
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsmenu.cpp(26): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsmenu.cpp(32): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsmenu.cpp(41): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsmenu.cpp(54): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsmenu.cpp(63): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsmenu.cpp(75): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+﻿  GSPlay.cpp
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(34): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(47): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
 c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(901): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(971): note: see reference to function template instantiation 'std::_Ref_count_obj<_Ty>::_Ref_count_obj<std::shared_ptr<Shaders>&,std::shared_ptr<Font>&,const char(&)[12],TEXT_COLOR,double>(std::shared_ptr<Shaders> &,std::shared_ptr<Font> &,const char (&)[12],TEXT_COLOR &&,double &&)' being compiled
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(971): note: see reference to function template instantiation 'std::_Ref_count_obj<_Ty>::_Ref_count_obj<std::shared_ptr<Shaders>&,std::shared_ptr<Font>&,const char(&)[10],TEXT_COLOR,double>(std::shared_ptr<Shaders> &,std::shared_ptr<Font> &,const char (&)[10],TEXT_COLOR &&,double &&)' being compiled
           with
           [
               _Ty=Text
           ]
-  c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(971): note: see reference to function template instantiation 'std::_Ref_count_obj<_Ty>::_Ref_count_obj<std::shared_ptr<Shaders>&,std::shared_ptr<Font>&,const char(&)[12],TEXT_COLOR,double>(std::shared_ptr<Shaders> &,std::shared_ptr<Font> &,const char (&)[12],TEXT_COLOR &&,double &&)' being compiled
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(971): note: see reference to function template instantiation 'std::_Ref_count_obj<_Ty>::_Ref_count_obj<std::shared_ptr<Shaders>&,std::shared_ptr<Font>&,const char(&)[10],TEXT_COLOR,double>(std::shared_ptr<Shaders> &,std::shared_ptr<Font> &,const char (&)[10],TEXT_COLOR &&,double &&)' being compiled
           with
           [
               _Ty=Text
           ]
-  c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsmenu.cpp(74): note: see reference to function template instantiation 'std::shared_ptr<Text> std::make_shared<Text,std::shared_ptr<Shaders>&,std::shared_ptr<Font>&,const char(&)[12],TEXT_COLOR,double>(std::shared_ptr<Shaders> &,std::shared_ptr<Font> &,const char (&)[12],TEXT_COLOR &&,double &&)' being compiled
+  c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(41): note: see reference to function template instantiation 'std::shared_ptr<Text> std::make_shared<Text,std::shared_ptr<Shaders>&,std::shared_ptr<Font>&,const char(&)[10],TEXT_COLOR,double>(std::shared_ptr<Shaders> &,std::shared_ptr<Font> &,const char (&)[10],TEXT_COLOR &&,double &&)' being compiled
   TrainingFramework.vcxproj -> C:\Users\Microsoft Windows\Desktop\Programming_lesson_06\\BIN-Nvidia\TrainingFramework.exe
   TrainingFramework.vcxproj -> C:\Users\Microsoft Windows\Desktop\Programming_lesson_06\\BIN-Nvidia\TrainingFramework.pdb (Full PDB)
