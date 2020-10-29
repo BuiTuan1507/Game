@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\utilities\src\</FILEPATH>
+      <FILENAME>memoryoperators.h</FILENAME>
+      <LINE>4</LINE>
+      <COLUMN>7</COLUMN>
+    </SFA>
+    <DEFECTCODE>28251</DEFECTCODE>
+    <DESCRIPTION>Inconsistent annotation for 'new': this instance has no annotations. See c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\predefined c++ types (compiler internal)(23). The first user-provided annotation on this built-in function is at line c:\program files (x86)\microsoft visual studio 14.0\vc\include\vcruntime_new.h(34). </DESCRIPTION>
+    <FUNCTION>new</FUNCTION>
+    <DECORATED>??2@YAPAXI@Z</DECORATED>
+    <FUNCLINE>4</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\utilities\src\</FILEPATH>
+      <FILENAME>memoryoperators.h</FILENAME>
+      <LINE>5</LINE>
+      <COLUMN>7</COLUMN>
+    </SFA>
+    <DEFECTCODE>28251</DEFECTCODE>
+    <DESCRIPTION>Inconsistent annotation for 'new[]': this instance has no annotations. See c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\predefined c++ types (compiler internal)(37). The first user-provided annotation on this built-in function is at line c:\program files (x86)\microsoft visual studio 14.0\vc\include\vcruntime_new.h(45). </DESCRIPTION>
+    <FUNCTION>new[]</FUNCTION>
+    <DECORATED>??_U@YAPAXI@Z</DECORATED>
+    <FUNCLINE>5</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+      <FILENAME>models.cpp</FILENAME>
+      <LINE>10</LINE>
+      <COLUMN>2</COLUMN>
+    </SFA>
+    <DEFECTCODE>6284</DEFECTCODE>
+    <DESCRIPTION>Object passed as _Param_(2) when a string is required in call to 'printf' Actual type: 'const class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt;'.</DESCRIPTION>
+    <FUNCTION>Models::{ctor}</FUNCTION>
+    <DECORATED>??0Models@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z</DECORATED>
+    <FUNCLINE>4</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+      <FILENAME>models.cpp</FILENAME>
+      <LINE>13</LINE>
+      <COLUMN>1</COLUMN>
+    </SFA>
+    <DEFECTCODE>6284</DEFECTCODE>
+    <DESCRIPTION>Object passed as _Param_(2) when a string is required in call to 'printf' Actual type: 'const class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt;'.</DESCRIPTION>
+    <FUNCTION>Models::{ctor}</FUNCTION>
+    <DECORATED>??0Models@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z</DECORATED>
+    <FUNCLINE>4</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+      <FILENAME>models.cpp</FILENAME>
+      <LINE>35</LINE>
+      <COLUMN>17</COLUMN>
+    </SFA>
+    <DEFECTCODE>6340</DEFECTCODE>
+    <DESCRIPTION>Mismatch on sign: 'unsigned int' passed as _Param_(3) when some signed type is required in call to 'sscanf'.</DESCRIPTION>
+    <FUNCTION>Models::{ctor}</FUNCTION>
+    <DECORATED>??0Models@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z</DECORATED>
+    <FUNCLINE>4</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+      <FILENAME>models.cpp</FILENAME>
+      <LINE>62</LINE>
+      <COLUMN>13</COLUMN>
+    </SFA>
+    <DEFECTCODE>6340</DEFECTCODE>
+    <DESCRIPTION>Mismatch on sign: 'unsigned int' passed as _Param_(3) when some signed type is required in call to 'sscanf'.</DESCRIPTION>
+    <FUNCTION>Models::{ctor}</FUNCTION>
+    <DECORATED>??0Models@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z</DECORATED>
+    <FUNCLINE>4</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+      <FILENAME>models.cpp</FILENAME>
+      <LINE>68</LINE>
+      <COLUMN>14</COLUMN>
+    </SFA>
+    <DEFECTCODE>6340</DEFECTCODE>
+    <DESCRIPTION>Mismatch on sign: 'unsigned int' passed as _Param_(3) when some signed type is required in call to 'sscanf'.</DESCRIPTION>
+    <FUNCTION>Models::{ctor}</FUNCTION>
+    <DECORATED>??0Models@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z</DECORATED>
+    <FUNCLINE>4</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+      <FILENAME>models.cpp</FILENAME>
+      <LINE>68</LINE>
+      <COLUMN>14</COLUMN>
+    </SFA>
+    <DEFECTCODE>6340</DEFECTCODE>
+    <DESCRIPTION>Mismatch on sign: 'unsigned int' passed as _Param_(4) when some signed type is required in call to 'sscanf'.</DESCRIPTION>
+    <FUNCTION>Models::{ctor}</FUNCTION>
+    <DECORATED>??0Models@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z</DECORATED>
+    <FUNCLINE>4</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+      <FILENAME>models.cpp</FILENAME>
+      <LINE>68</LINE>
+      <COLUMN>14</COLUMN>
+    </SFA>
+    <DEFECTCODE>6340</DEFECTCODE>
+    <DESCRIPTION>Mismatch on sign: 'unsigned int' passed as _Param_(5) when some signed type is required in call to 'sscanf'.</DESCRIPTION>
+    <FUNCTION>Models::{ctor}</FUNCTION>
+    <DECORATED>??0Models@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z</DECORATED>
+    <FUNCLINE>4</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+      <FILENAME>models.cpp</FILENAME>
+      <LINE>78</LINE>
+      <COLUMN>13</COLUMN>
+    </SFA>
+    <DEFECTCODE>6001</DEFECTCODE>
+    <DESCRIPTION>Using uninitialized memory 'verticesData'.</DESCRIPTION>
+    <FUNCTION>Models::{ctor}</FUNCTION>
+    <DECORATED>??0Models@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z</DECORATED>
+    <FUNCLINE>4</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>3</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+        <FILENAME>models.cpp</FILENAME>
+        <LINE>7</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+        <FILENAME>models.cpp</FILENAME>
+        <LINE>8</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+        <FILENAME>models.cpp</FILENAME>
+        <LINE>13</LINE>
+        <COLUMN>1</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+        <FILENAME>models.cpp</FILENAME>
+        <LINE>15</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+        <FILENAME>models.cpp</FILENAME>
+        <LINE>16</LINE>
+        <COLUMN>9</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'verticesData' is not initialized</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+        <FILENAME>models.cpp</FILENAME>
+        <LINE>17</LINE>
+        <COLUMN>9</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+        <FILENAME>models.cpp</FILENAME>
+        <LINE>18</LINE>
+        <COLUMN>10</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Skip this branch, (assume 'type==333' is false)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+        <FILENAME>models.cpp</FILENAME>
+        <LINE>76</LINE>
+        <COLUMN>13</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+        <FILENAME>models.cpp</FILENAME>
+        <LINE>77</LINE>
+        <COLUMN>13</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+        <FILENAME>models.cpp</FILENAME>
+        <LINE>78</LINE>
+        <COLUMN>13</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'verticesData' is an In/Out argument to 'glBufferData' (declared at c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\include\amd\gles2\gl2.h:486)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+        <FILENAME>models.cpp</FILENAME>
+        <LINE>78</LINE>
+        <COLUMN>13</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'verticesData' is used, but may not have been initialized</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+      <FILENAME>models.cpp</FILENAME>
+      <LINE>85</LINE>
+      <COLUMN>14</COLUMN>
+    </SFA>
+    <DEFECTCODE>6001</DEFECTCODE>
+    <DESCRIPTION>Using uninitialized memory 'Indices'.</DESCRIPTION>
+    <FUNCTION>Models::{ctor}</FUNCTION>
+    <DECORATED>??0Models@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z</DECORATED>
+    <FUNCLINE>4</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>3</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+        <FILENAME>models.cpp</FILENAME>
+        <LINE>7</LINE>
+        <COLUMN>15</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+        <FILENAME>models.cpp</FILENAME>
+        <LINE>8</LINE>
+        <COLUMN>5</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+        <FILENAME>models.cpp</FILENAME>
+        <LINE>13</LINE>
+        <COLUMN>1</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+        <FILENAME>models.cpp</FILENAME>
+        <LINE>15</LINE>
+        <COLUMN>8</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+        <FILENAME>models.cpp</FILENAME>
+        <LINE>16</LINE>
+        <COLUMN>9</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+        <FILENAME>models.cpp</FILENAME>
+        <LINE>17</LINE>
+        <COLUMN>9</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'Indices' is not initialized</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+        <FILENAME>models.cpp</FILENAME>
+        <LINE>18</LINE>
+        <COLUMN>10</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>branch</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>Skip this branch, (assume 'type==333' is false)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+        <FILENAME>models.cpp</FILENAME>
+        <LINE>76</LINE>
+        <COLUMN>13</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+        <FILENAME>models.cpp</FILENAME>
+        <LINE>77</LINE>
+        <COLUMN>13</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+        <FILENAME>models.cpp</FILENAME>
+        <LINE>78</LINE>
+        <COLUMN>13</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+        <FILENAME>models.cpp</FILENAME>
+        <LINE>79</LINE>
+        <COLUMN>13</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+        <FILENAME>models.cpp</FILENAME>
+        <LINE>83</LINE>
+        <COLUMN>14</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+        <FILENAME>models.cpp</FILENAME>
+        <LINE>84</LINE>
+        <COLUMN>14</COLUMN>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+        <FILENAME>models.cpp</FILENAME>
+        <LINE>85</LINE>
+        <COLUMN>14</COLUMN>
+        <KEYEVENT>
+          <ID>3</ID>
+          <KIND>declaration</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'Indices' is an In/Out argument to 'glBufferData' (declared at c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\include\amd\gles2\gl2.h:486)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>c:\users\microsoft windows\desktop\programming_lesson_06\programming_lesson_06\trainingframework\src\gameobject\</FILEPATH>
+        <FILENAME>models.cpp</FILENAME>
+        <LINE>85</LINE>
+        <COLUMN>14</COLUMN>
+        <KEYEVENT>
+          <ID>4</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'Indices' is used, but may not have been initialized</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT>
+</DEFECTS>
