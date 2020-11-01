@@ -1,6 +1,7 @@
 ﻿  GSPlay.cpp
 c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(34): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(47): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(39): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(109): warning C4244: 'initializing': conversion from 'GLfloat' to 'int', possible loss of data
 c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(901): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(971): note: see reference to function template instantiation 'std::_Ref_count_obj<_Ty>::_Ref_count_obj<std::shared_ptr<Shaders>&,std::shared_ptr<Font>&,const char(&)[10],TEXT_COLOR,double>(std::shared_ptr<Shaders> &,std::shared_ptr<Font> &,const char (&)[10],TEXT_COLOR &&,double &&)' being compiled
           with
@@ -12,6 +13,6 @@ c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(901): warn
           [
               _Ty=Text
           ]
-  c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(41): note: see reference to function template instantiation 'std::shared_ptr<Text> std::make_shared<Text,std::shared_ptr<Shaders>&,std::shared_ptr<Font>&,const char(&)[10],TEXT_COLOR,double>(std::shared_ptr<Shaders> &,std::shared_ptr<Font> &,const char (&)[10],TEXT_COLOR &&,double &&)' being compiled
+  c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(63): note: see reference to function template instantiation 'std::shared_ptr<Text> std::make_shared<Text,std::shared_ptr<Shaders>&,std::shared_ptr<Font>&,const char(&)[10],TEXT_COLOR,double>(std::shared_ptr<Shaders> &,std::shared_ptr<Font> &,const char (&)[10],TEXT_COLOR &&,double &&)' being compiled
   TrainingFramework.vcxproj -> C:\Users\Microsoft Windows\Desktop\Programming_lesson_06\\BIN-Nvidia\TrainingFramework.exe
   TrainingFramework.vcxproj -> C:\Users\Microsoft Windows\Desktop\Programming_lesson_06\\BIN-Nvidia\TrainingFramework.pdb (Full PDB)

@@ -1,4 +1,4 @@
-#include "GSMenu.h"
+ #include "GSMenu.h"
 
 extern int screenWidth; //need get on Graphic engine
 extern int screenHeight; //need get on Graphic engine
@@ -18,7 +18,7 @@ GSMenu::~GSMenu()
 void GSMenu::Init()
 {
 	auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D");
-	auto texture = ResourceManagers::GetInstance()->GetTexture("bg_main_menu");
+	auto texture = ResourceManagers::GetInstance()->GetTexture("bg_menu_top");
 
 	//BackGround
 	auto shader = ResourceManagers::GetInstance()->GetShader("TextureShader");
@@ -29,8 +29,8 @@ void GSMenu::Init()
 	//play button
 	texture = ResourceManagers::GetInstance()->GetTexture("button_play");
 	std::shared_ptr<GameButton> button = std::make_shared<GameButton>(model, shader, texture);
-	button->Set2DPosition(screenWidth / 2, 200);
-	button->SetSize(200, 50);
+	button->Set2DPosition(screenWidth / 2, 150);
+	button->SetSize(150, 50);
 	button->SetOnClick([]() {
 		GameStateMachine::GetInstance()->ChangeState(StateTypes::STATE_Play);
 	});
@@ -38,8 +38,8 @@ void GSMenu::Init()
 	//option button
 	texture = ResourceManagers::GetInstance()->GetTexture("button_setting");
 	button = std::make_shared<GameButton>(model, shader, texture);
-	button->Set2DPosition(screenWidth / 2, 300);
-	button->SetSize(200, 50);
+	button->Set2DPosition(screenWidth / 2, 220);
+	button->SetSize(150, 50);
 	button->SetOnClick([]() {
 		GameStateMachine::GetInstance()->ChangeState(StateTypes::STATE_Play);
 	});
@@ -48,8 +48,8 @@ void GSMenu::Init()
 	//exit button
 	texture = ResourceManagers::GetInstance()->GetTexture("button_quit");
 	button = std::make_shared<GameButton>(model, shader, texture);
-	button->Set2DPosition(screenWidth / 2, 400);
-	button->SetSize(200, 50);
+	button->Set2DPosition(screenWidth / 2, 290);
+	button->SetSize(150, 50);
 	button->SetOnClick([]() {
 		exit(0);
 	});
@@ -60,8 +60,8 @@ void GSMenu::Init()
 	//text game title
 	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
 	std::shared_ptr<Font> font = ResourceManagers::GetInstance()->GetFont("arialbd");
-	m_Text_gameName = std::make_shared< Text>(shader, font, "SAMPLE NAME", TEXT_COLOR::GREEN, 1.0);
-	m_Text_gameName->Set2DPosition(Vector2(screenWidth / 2 - 80, 120));
+	m_Text_gameName = std::make_shared< Text>(shader, font, "HAPPY VILLIAGE", TEXT_COLOR::GREEN, 1.0);
+	m_Text_gameName->Set2DPosition(Vector2(screenWidth / 2 - 80, 40));
 }
 
 void GSMenu::Exit()
