@@ -28,6 +28,7 @@ void GSPlay::Init()
 	auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D");
 	auto texture = ResourceManagers::GetInstance()->GetTexture("123");
 	auto hero = ResourceManagers::GetInstance()->GetTexture("hero");
+	auto coin = ResourceManagers::GetInstance()->GetTexture("coin_Game");
 	//BackGround
 	auto shader = ResourceManagers::GetInstance()->GetShader("TextureShader");
 	m_BackGround = std::make_shared<Sprite2D>(model, shader, texture);
@@ -39,6 +40,15 @@ void GSPlay::Init()
 	m_Hero->SetSize(35, 55);
 
 
+	std::shared_ptr<Sprite2D> m_coin1 = std::make_shared<Sprite2D>(model, shader, coin);
+	m_coin1->Set2DPosition(100, 330);
+	m_coin1->SetSize(25, 20);
+	m_listCoin.push_back(m_coin1);
+
+	std::shared_ptr<Sprite2D> m_coin = std::make_shared<Sprite2D>(model, shader, coin);
+	m_coin->Set2DPosition(140, 330);
+	m_coin->SetSize(25, 20);
+	m_listCoin.push_back(m_coin);
 
 	texture = ResourceManagers::GetInstance()->GetTexture("button_back");
 	std::shared_ptr<GameButton> button = std::make_shared<GameButton>(model, shader, texture);
@@ -127,7 +137,7 @@ void GSPlay::Update(float deltaTime)
 	m_Hero->Update(deltaTime);
 	Vector2 newPost = m_BackGround->Get2DPosition();
 	int deltaMove = newPost.x - screenWidth/2;
-	m_BackGround->Set2DPosition(newPost.x-1, newPost.y);
+	//m_BackGround->Set2DPosition(newPost.x-1, newPost.y);
 	//if (newPost.x -  screenWidth/2 > 0){
 		//m_BackGround->Set2DPosition(oldPost.x - deltaMove, oldPost.y);
 	//}
@@ -143,6 +153,7 @@ void GSPlay::Update(float deltaTime)
 	{
 		obj->Update(deltaTime);
 	}
+
 }
 
 void GSPlay::Draw()
@@ -154,6 +165,10 @@ void GSPlay::Draw()
 	{
 		it->Draw();
 	}
+	for (auto it : m_listCoin)
+	{
+		it->Draw();
+	}
 	//for (auto obj : m_listSpriteAnimations)
 	//{
 		//obj->Draw();
@@ -162,4 +177,15 @@ void GSPlay::Draw()
 
 void GSPlay::SetNewPostionForBullet()
 {
+}
+void GSPlay::giveCoin() {
+	Vector2 oldPositon = m_Hero->Get2DPosition();
+	for(auto it:m_listCoin)
+	{
+		Vector2 coinPosition = it->Get2DPosition();
+		if ((oldPositon.x == coinPosition.x) && (oldPositon.y == coinPosition.y))
+		{
+			m_listCoin.pop_back();
+		}
+	}
 }
