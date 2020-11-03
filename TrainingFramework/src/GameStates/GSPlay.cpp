@@ -27,17 +27,18 @@ void GSPlay::Init()
 {
 	auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D");
 	auto texture = ResourceManagers::GetInstance()->GetTexture("123");
-
+	auto hero = ResourceManagers::GetInstance()->GetTexture("hero");
 	//BackGround
 	auto shader = ResourceManagers::GetInstance()->GetShader("TextureShader");
 	m_BackGround = std::make_shared<Sprite2D>(model, shader, texture);
 	m_BackGround->Set2DPosition(screenWidth / 2, screenHeight / 2);
 	m_BackGround->SetSize(screenWidth, screenHeight);
 
-	
-	m_BackGround1 = std::make_shared<Sprite2D>(model, shader, texture);
-	m_BackGround1->Set2DPosition(screenWidth / 2, screenHeight / 2);
-	m_BackGround1->SetSize(screenWidth, screenHeight);
+	m_Hero = std::make_shared<Sprite2D>(model, shader, hero);
+	m_Hero->Set2DPosition(50, 360);
+	m_Hero->SetSize(35, 55);
+
+
 
 	texture = ResourceManagers::GetInstance()->GetTexture("button_back");
 	std::shared_ptr<GameButton> button = std::make_shared<GameButton>(model, shader, texture);
@@ -88,7 +89,27 @@ void GSPlay::HandleEvents()
 
 void GSPlay::HandleKeyEvents(int key, bool bIsPressed)
 {
-
+	Vector2 oldPostion = m_Hero->Get2DPosition();
+	Vector2 oldBackground = m_BackGround->Get2DPosition();
+	//m_Hero->HandKeyEvents(key, bIsPressed);
+	switch (key)
+	{
+	case 40://xuong
+		m_Hero->Set2DPosition(oldPostion.x , oldPostion.y+5);
+	break;
+	case 39://phai
+		m_Hero->Set2DPosition(oldPostion.x+5, oldPostion.y );
+	
+		break;
+	case 37://trai
+		m_Hero->Set2DPosition(oldPostion.x - 5, oldPostion.y);
+		break;
+	case 38://len
+		m_Hero->Set2DPosition(oldPostion.x, oldPostion.y - 5);
+		break;
+	}
+	
+	
 }
 
 void GSPlay::HandleTouchEvents(int x, int y, bool bIsPressed)
@@ -103,17 +124,17 @@ void GSPlay::HandleTouchEvents(int x, int y, bool bIsPressed)
 void GSPlay::Update(float deltaTime)
 {
 	m_BackGround->Update(deltaTime);
-	
-	Vector2 oldPost = m_BackGround1->Get2DPosition();
+	m_Hero->Update(deltaTime);
 	Vector2 newPost = m_BackGround->Get2DPosition();
-	int deltaMove = newPost.x - oldPost.x;
-	if (oldPost.x - deltaMove > -screenWidth / 2){
-		m_BackGround->Set2DPosition(oldPost.x - deltaMove, oldPost.y);
-	}
-	else
-	{
-		m_BackGround->Set2DPosition(oldPost.x - deltaMove + screenWidth * 2, oldPost.y);
-	}
+	int deltaMove = newPost.x - screenWidth/2;
+	m_BackGround->Set2DPosition(newPost.x-1, newPost.y);
+	//if (newPost.x -  screenWidth/2 > 0){
+		//m_BackGround->Set2DPosition(oldPost.x - deltaMove, oldPost.y);
+	//}
+	//else
+	//{
+		//m_BackGround->Set2DPosition(oldPost.x - deltaMove +screenWidth/2 , oldPost.y);
+	//}
 	for (auto it : m_listButton)
 	{
 		it->Update(deltaTime);
@@ -128,14 +149,15 @@ void GSPlay::Draw()
 {
 	m_BackGround->Draw();
 	m_score->Draw();
+	m_Hero->Draw();
 	for (auto it : m_listButton)
 	{
 		it->Draw();
 	}
-	for (auto obj : m_listSpriteAnimations)
-	{
-		obj->Draw();
-	}
+	//for (auto obj : m_listSpriteAnimations)
+	//{
+		//obj->Draw();
+	//}
 }
 
 void GSPlay::SetNewPostionForBullet()

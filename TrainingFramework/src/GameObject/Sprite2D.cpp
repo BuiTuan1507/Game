@@ -121,6 +121,7 @@ void Sprite2D::Draw()
 
 void Sprite2D::Update(GLfloat deltatime)
 {
+
 }
 
 
