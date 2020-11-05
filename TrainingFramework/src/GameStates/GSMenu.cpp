@@ -36,7 +36,7 @@ void GSMenu::Init()
 	});
 	m_listButton.push_back(button);
 	//option button
-	texture = ResourceManagers::GetInstance()->GetTexture("button_setting");
+	texture = ResourceManagers::GetInstance()->GetTexture("bb");
 	button = std::make_shared<GameButton>(model, shader, texture);
 	button->Set2DPosition(screenWidth / 2, 220);
 	button->SetSize(150, 50);

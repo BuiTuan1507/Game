@@ -9,8 +9,14 @@
 #include "Sprite3D.h"
 #include "Text.h"
 #include "SpriteAnimation.h"
+
 extern int screenWidth; //need get on Graphic engine
 extern int screenHeight; //need get on Graphic engine
+int score = 0;
+bool keyUP = false;
+int stateHero = 0;
+int timeJump = 50;
+
 
 GSPlay::GSPlay()
 {
@@ -27,7 +33,7 @@ void GSPlay::Init()
 {
 	auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D");
 	auto texture = ResourceManagers::GetInstance()->GetTexture("123");
-	auto hero = ResourceManagers::GetInstance()->GetTexture("hero");
+	auto hero = ResourceManagers::GetInstance()->GetTexture("bbc1");
 	auto coin = ResourceManagers::GetInstance()->GetTexture("coin_Game");
 	//BackGround
 	auto shader = ResourceManagers::GetInstance()->GetShader("TextureShader");
@@ -35,21 +41,17 @@ void GSPlay::Init()
 	m_BackGround->Set2DPosition(screenWidth / 2, screenHeight / 2);
 	m_BackGround->SetSize(screenWidth, screenHeight);
 
+	//Background1
+	m_BackGround1 = std::make_shared<Sprite2D>(model, shader, texture);
+	m_BackGround1->Set2DPosition(2 * screenWidth , screenHeight / 2);
+	m_BackGround1->SetSize(screenWidth, screenHeight);
+	//Hero
 	m_Hero = std::make_shared<Sprite2D>(model, shader, hero);
-	m_Hero->Set2DPosition(50, 360);
-	m_Hero->SetSize(35, 55);
+	m_Hero->Set2DPosition(350, 380);
+	m_Hero->SetSize(21, 22);
 
-
-	std::shared_ptr<Sprite2D> m_coin1 = std::make_shared<Sprite2D>(model, shader, coin);
-	m_coin1->Set2DPosition(100, 330);
-	m_coin1->SetSize(25, 20);
-	m_listCoin.push_back(m_coin1);
-
-	std::shared_ptr<Sprite2D> m_coin = std::make_shared<Sprite2D>(model, shader, coin);
-	m_coin->Set2DPosition(140, 330);
-	m_coin->SetSize(25, 20);
-	m_listCoin.push_back(m_coin);
-
+	
+	//button back
 	texture = ResourceManagers::GetInstance()->GetTexture("button_back");
 	std::shared_ptr<GameButton> button = std::make_shared<GameButton>(model, shader, texture);
 	button->Set2DPosition(700, 70);
@@ -59,20 +61,42 @@ void GSPlay::Init()
 	});
 	m_listButton.push_back(button);
 
+	
+	//coin1
+	shader = ResourceManagers::GetInstance()->GetShader("Animation");
+	texture = ResourceManagers::GetInstance()->GetTexture("coin1");
+	std::shared_ptr<SpriteAnimation> obj = std::make_shared<SpriteAnimation>(model, shader, texture, 6, 0.1f);
+	obj->Set2DPosition(130, 330);
+	obj->SetSize(20, 20);
+	m_listSpriteAnimations1.push_back(obj);
+	//m_listCoinAnimations[0].push_back(obj);
+	//coin
+	obj = std::make_shared<SpriteAnimation>(model, shader, texture, 6, 0.1f);
+	obj->Set2DPosition(180, 330);
+	obj->SetSize(20, 20);
+	m_listSpriteAnimations1.push_back(obj);
+	//m_listCoinAnimations[1].push_back(obj);
 	// Animation
 	shader = ResourceManagers::GetInstance()->GetShader("Animation");
 	texture = ResourceManagers::GetInstance()->GetTexture("run");
-	std::shared_ptr<SpriteAnimation> obj = std::make_shared<SpriteAnimation>(model, shader, texture, 10, 0.08f);
-	obj->Set2DPosition(200, 240);
+	obj = std::make_shared<SpriteAnimation>(model, shader, texture, 10, 0.1f);
+	obj->Set2DPosition(50, 360);
 	obj->SetSize(52, 52);
 	m_listSpriteAnimations.push_back(obj);
+	m_listActiveAnimations.push_back(obj);
 
+	shader = ResourceManagers::GetInstance()->GetShader("Animation");
+	texture = ResourceManagers::GetInstance()->GetTexture("jump");
+	heroJump = std::make_shared<SpriteAnimation>(model, shader, texture, 10, 0.1f);
+	heroJump->Set2DPosition(250, 360);
+	heroJump->SetSize(52, 52);
+	m_listSpriteAnimations.push_back(obj);
 
 	//text game title
 	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
 	std::shared_ptr<Font> font = ResourceManagers::GetInstance()->GetFont("arialbd");
-	m_score = std::make_shared< Text>(shader, font, "score: 10", TEXT_COLOR::RED, 1.0);
-	m_score->Set2DPosition(Vector2(5, 25));
+	m_score = std::make_shared< Text>(shader, font, std::to_string(score), TEXT_COLOR::RED, 1.0);
+	m_score->Set2DPosition(Vector2(20, 25));
 }
 
 void GSPlay::Exit()
@@ -99,24 +123,33 @@ void GSPlay::HandleEvents()
 
 void GSPlay::HandleKeyEvents(int key, bool bIsPressed)
 {
-	Vector2 oldPostion = m_Hero->Get2DPosition();
+	Vector2 oldPostion = m_listSpriteAnimations[0]->Get2DPosition();
 	Vector2 oldBackground = m_BackGround->Get2DPosition();
 	//m_Hero->HandKeyEvents(key, bIsPressed);
-	switch (key)
+	if ((key == KEY_LEFT) && (bIsPressed == true))
 	{
-	case 40://xuong
-		m_Hero->Set2DPosition(oldPostion.x , oldPostion.y+5);
-	break;
-	case 39://phai
-		m_Hero->Set2DPosition(oldPostion.x+5, oldPostion.y );
+		m_listSpriteAnimations[0]->Set2DPosition(oldPostion.x - 5, oldPostion.y);
 	
-		break;
-	case 37://trai
-		m_Hero->Set2DPosition(oldPostion.x - 5, oldPostion.y);
-		break;
-	case 38://len
-		m_Hero->Set2DPosition(oldPostion.x, oldPostion.y - 5);
-		break;
+	}
+	if ((key == KEY_RIGHT) && (bIsPressed == true))
+	{
+		m_listSpriteAnimations[0]->Set2DPosition(oldPostion.x + 5, oldPostion.y);
+	}
+	if ((key == KEY_UP) && (bIsPressed == true))
+	{
+		m_listActiveAnimations.pop_back();
+		Vector2 jumpPosition =  m_listSpriteAnimations[0]->Get2DPosition();
+		heroJump->Set2DPosition(jumpPosition.x , jumpPosition.y - 30);
+		m_listActiveAnimations.push_back(heroJump);
+		stateHero = 1;
+		
+		
+	
+
+	}
+	if ((key == KEY_DOWN) && (bIsPressed == true))
+	{
+		m_listSpriteAnimations[0]->Set2DPosition(oldPostion.x, oldPostion.y + 5);
 	}
 	
 	
@@ -134,58 +167,86 @@ void GSPlay::HandleTouchEvents(int x, int y, bool bIsPressed)
 void GSPlay::Update(float deltaTime)
 {
 	m_BackGround->Update(deltaTime);
+	m_BackGround1->Update(deltaTime);
+	m_score->Update(deltaTime);
+	Vector2 p_Background = m_BackGround->Get2DPosition();
+	Vector2 p_Background1 = m_BackGround1->Get2DPosition();
+	//m_BackGround->Set2DPosition(p_Background.x - 2, p_Background.y);
+	//m_BackGround1->Set2DPosition(p_Background1.x - 2,p_Background1.y);
+
 	m_Hero->Update(deltaTime);
-	Vector2 newPost = m_BackGround->Get2DPosition();
-	int deltaMove = newPost.x - screenWidth/2;
-	//m_BackGround->Set2DPosition(newPost.x-1, newPost.y);
-	//if (newPost.x -  screenWidth/2 > 0){
-		//m_BackGround->Set2DPosition(oldPost.x - deltaMove, oldPost.y);
-	//}
-	//else
-	//{
-		//m_BackGround->Set2DPosition(oldPost.x - deltaMove +screenWidth/2 , oldPost.y);
-	//}
-	for (auto it : m_listButton)
+	int deltaMove = 0;
+	 deltaMove = deltaMove + 60 * deltaTime;
+
+	 //setup state hero
+	 if ((stateHero == 1) && (timeJump > 0)){
+		 timeJump = timeJump - deltaTime;
+	 }
+	 else {
+		 Vector2 runPosition = m_listSpriteAnimations[0]->Get2DPosition();
+		// m_listSpriteAnimations[0]->Set2DPosition(runPosition.x + 10, runPosition.y);
+		 m_listActiveAnimations.pop_back();
+		 m_listActiveAnimations.push_back(m_listSpriteAnimations[0]);
+		 stateHero = 0;
+		 timeJump = 50;
+	 }
+	 // get coin
+	 Vector2 positionHero = m_listActiveAnimations[0]->Get2DPosition();
+	 for (auto it : m_listSpriteAnimations1) {
+		 Vector2 positionCoin = it->Get2DPosition();
+		 int p = positionHero.x - positionCoin.x;
+		 if ((p<25) && (p>-25) && (positionHero.y == positionCoin.y))
+		 {
+			 score = score + 1;
+			 //m_listSpriteAnimations1.pop_back();
+			 printf("a");
+			 
+		 }
+	 }
+
+	for (auto it1 : m_listButton)
 	{
-		it->Update(deltaTime);
+		it1->Update(deltaTime);
 	}
-	for (auto obj : m_listSpriteAnimations)
-	{
-		obj->Update(deltaTime);
+	
+	for (auto it : m_listActiveAnimations) {
+			it->Update(deltaTime);
 	}
+	for (auto it : m_listSpriteAnimations1) {
+	it->Update(deltaTime);
+	}
+
+	
 
 }
 
 void GSPlay::Draw()
 {
+	
+	m_BackGround1->Draw();
 	m_BackGround->Draw();
 	m_score->Draw();
 	m_Hero->Draw();
-	for (auto it : m_listButton)
+	for (auto it1 : m_listButton)
 	{
-		it->Draw();
+		it1->Draw();
 	}
-	for (auto it : m_listCoin)
+	
+	for (auto it : m_listSpriteAnimations1) {
+			it->Draw();
+	}
+	
+	
+	for (auto obj : m_listActiveAnimations)
 	{
-		it->Draw();
+		obj->Draw();
 	}
-	//for (auto obj : m_listSpriteAnimations)
-	//{
-		//obj->Draw();
-	//}
+	
 }
 
 void GSPlay::SetNewPostionForBullet()
 {
 }
 void GSPlay::giveCoin() {
-	Vector2 oldPositon = m_Hero->Get2DPosition();
-	for(auto it:m_listCoin)
-	{
-		Vector2 coinPosition = it->Get2DPosition();
-		if ((oldPositon.x == coinPosition.x) && (oldPositon.y == coinPosition.y))
-		{
-			m_listCoin.pop_back();
-		}
-	}
+	
 }
