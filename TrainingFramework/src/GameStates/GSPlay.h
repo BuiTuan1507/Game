@@ -30,6 +30,7 @@ public:
 
 	void SetNewPostionForBullet();
 	void giveCoin();
+	void Jump();
 
 private:
 

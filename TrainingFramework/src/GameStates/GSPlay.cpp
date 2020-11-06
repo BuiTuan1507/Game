@@ -15,9 +15,9 @@ extern int screenHeight; //need get on Graphic engine
 int score = 0;
 bool keyUP = false;
 int stateHero = 0;
-int timeJump = 50;
+int timeJump = 10;
 int deltaMove = 0;
-
+int deltaJump = 0;
 
 GSPlay::GSPlay()
 {
@@ -138,15 +138,8 @@ void GSPlay::HandleKeyEvents(int key, bool bIsPressed)
 	}
 	if ((key == KEY_UP) && (bIsPressed == true))
 	{
-		m_listActiveAnimations.pop_back();
-		Vector2 jumpPosition =  m_listSpriteAnimations[0]->Get2DPosition();
-		heroJump->Set2DPosition(jumpPosition.x , jumpPosition.y - 30);
-		m_listActiveAnimations.push_back(heroJump);
-		stateHero = 1;
 		
-		
-	
-
+		Jump();
 	}
 	if ((key == KEY_DOWN) && (bIsPressed == true))
 	{
@@ -167,6 +160,7 @@ void GSPlay::HandleTouchEvents(int x, int y, bool bIsPressed)
 
 void GSPlay::Update(float deltaTime)
 {
+	deltaJump = deltaTime;
 	m_BackGround->Update(deltaTime);
 	m_BackGround1->Update(deltaTime);
 	m_score->Update(deltaTime);
@@ -252,4 +246,11 @@ void GSPlay::SetNewPostionForBullet()
 }
 void GSPlay::giveCoin() {
 	
+}
+void GSPlay::Jump() {
+	m_listActiveAnimations.pop_back();
+	Vector2 jumpPosition = m_listSpriteAnimations[0]->Get2DPosition();
+	heroJump->Set2DPosition(jumpPosition.x, jumpPosition.y - 30);
+	m_listActiveAnimations.push_back(heroJump);
+	stateHero = 1;
 }
