@@ -172,7 +172,7 @@ void GSPlay::Update(float deltaTime)
 	m_score->Update(deltaTime);
 	Vector2 p_Background = m_BackGround->Get2DPosition();
 	Vector2 p_Background1 = m_BackGround1->Get2DPosition();
-	
+	deltaMove += deltaTime;
 	if (p_Background1.x - deltaMove > -screenWidth / 2) {
 		m_BackGround1->Set2DPosition(p_Background1.x - deltaMove, p_Background1.y);
 	}
