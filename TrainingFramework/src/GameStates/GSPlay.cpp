@@ -173,10 +173,13 @@ void GSPlay::Update(float deltaTime)
 	Vector2 p_Background = m_BackGround->Get2DPosition();
 	Vector2 p_Background1 = m_BackGround1->Get2DPosition();
 	
-	deltaMove += deltaTime;
-	if (125 * deltaMove > screenWidth) deltaMove = 0;
-	m_BackGround->Set2DPosition(screenWidth / 2 - 2, screenHeight / 2);
-	m_BackGround1->Set2DPosition(3* screenWidth / 2 - 2, screenHeight / 2);
+	if (p_Background1.x - deltaMove > -screenWidth / 2) {
+		m_BackGround1->Set2DPosition(p_Background1.x - deltaMove, p_Background1.y);
+	}
+	else
+	{
+		m_BackGround1->Set2DPosition(p_Background1.x - deltaMove + 2 * screenWidth, p_Background1.y);
+	}
 
 	 //setup state hero
 	 if ((stateHero == 1) && (timeJump > 0)){
