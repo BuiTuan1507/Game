@@ -16,6 +16,7 @@ int score = 0;
 bool keyUP = false;
 int stateHero = 0;
 int timeJump = 50;
+int deltaMove = 0;
 
 
 GSPlay::GSPlay()
@@ -43,7 +44,7 @@ void GSPlay::Init()
 
 	//Background1
 	m_BackGround1 = std::make_shared<Sprite2D>(model, shader, texture);
-	m_BackGround1->Set2DPosition(2 * screenWidth , screenHeight / 2);
+	m_BackGround1->Set2DPosition(3/2 * screenWidth , screenHeight / 2);
 	m_BackGround1->SetSize(screenWidth, screenHeight);
 	//Hero
 	m_Hero = std::make_shared<Sprite2D>(model, shader, hero);
@@ -171,12 +172,11 @@ void GSPlay::Update(float deltaTime)
 	m_score->Update(deltaTime);
 	Vector2 p_Background = m_BackGround->Get2DPosition();
 	Vector2 p_Background1 = m_BackGround1->Get2DPosition();
-	//m_BackGround->Set2DPosition(p_Background.x - 2, p_Background.y);
-	//m_BackGround1->Set2DPosition(p_Background1.x - 2,p_Background1.y);
-
-	m_Hero->Update(deltaTime);
-	int deltaMove = 0;
-	 deltaMove = deltaMove + 60 * deltaTime;
+	
+	deltaMove += deltaTime;
+	if (125 * deltaMove > screenWidth) deltaMove = 0;
+	m_BackGround->Set2DPosition(screenWidth / 2 - 2, screenHeight / 2);
+	m_BackGround1->Set2DPosition(3* screenWidth / 2 - 2, screenHeight / 2);
 
 	 //setup state hero
 	 if ((stateHero == 1) && (timeJump > 0)){
@@ -222,9 +222,9 @@ void GSPlay::Update(float deltaTime)
 
 void GSPlay::Draw()
 {
-	
-	m_BackGround1->Draw();
 	m_BackGround->Draw();
+	m_BackGround1->Draw();
+	
 	m_score->Draw();
 	m_Hero->Draw();
 	for (auto it1 : m_listButton)

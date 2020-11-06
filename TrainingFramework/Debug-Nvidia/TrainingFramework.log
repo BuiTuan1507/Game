@@ -1,7 +1,9 @@
 ﻿  GSPlay.cpp
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(41): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(46): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(179): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(42): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(47): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(176): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(178): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(179): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
 c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(183): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(197): warning C4244: 'initializing': conversion from 'GLfloat' to 'int', possible loss of data
 c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(901): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
@@ -15,6 +17,6 @@ c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(901): warn
           [
               _Ty=Text
           ]
-  c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(98): note: see reference to function template instantiation 'std::shared_ptr<Text> std::make_shared<Text,std::shared_ptr<Shaders>&,std::shared_ptr<Font>&,std::string,TEXT_COLOR,double>(std::shared_ptr<Shaders> &,std::shared_ptr<Font> &,std::string &&,TEXT_COLOR &&,double &&)' being compiled
+  c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(99): note: see reference to function template instantiation 'std::shared_ptr<Text> std::make_shared<Text,std::shared_ptr<Shaders>&,std::shared_ptr<Font>&,std::string,TEXT_COLOR,double>(std::shared_ptr<Shaders> &,std::shared_ptr<Font> &,std::string &&,TEXT_COLOR &&,double &&)' being compiled
   TrainingFramework.vcxproj -> C:\Users\Microsoft Windows\Desktop\Programming_lesson_06\\BIN-Nvidia\TrainingFramework.exe
   TrainingFramework.vcxproj -> C:\Users\Microsoft Windows\Desktop\Programming_lesson_06\\BIN-Nvidia\TrainingFramework.pdb (Full PDB)
