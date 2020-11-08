@@ -9,15 +9,21 @@
 #include "Sprite3D.h"
 #include "Text.h"
 #include "SpriteAnimation.h"
+#include "Obstacle.h"
+#include "Coin.h"
+#include "GSGameOver.h"
 
 extern int screenWidth; //need get on Graphic engine
 extern int screenHeight; //need get on Graphic engine
 int score = 0;
 bool keyUP = false;
+bool eatCoin = false;
+bool distanJump = false;
 int stateHero = 0;
 int timeJump = 10;
 int deltaMove = 0;
 int deltaJump = 0;
+bool isGameOver = false;
 
 GSPlay::GSPlay()
 {
@@ -35,6 +41,7 @@ void GSPlay::Init()
 	auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D");
 	auto texture = ResourceManagers::GetInstance()->GetTexture("123");
 	auto hero = ResourceManagers::GetInstance()->GetTexture("bbc1");
+
 	auto coin = ResourceManagers::GetInstance()->GetTexture("coin_Game");
 	//BackGround
 	auto shader = ResourceManagers::GetInstance()->GetShader("TextureShader");
@@ -46,12 +53,15 @@ void GSPlay::Init()
 	m_BackGround1 = std::make_shared<Sprite2D>(model, shader, texture);
 	m_BackGround1->Set2DPosition(1.5 * screenWidth , screenHeight / 2);
 	m_BackGround1->SetSize(screenWidth, screenHeight);
-	//Hero
-	m_Hero = std::make_shared<Sprite2D>(model, shader, hero);
-	m_Hero->Set2DPosition(350, 380);
-	m_Hero->SetSize(21, 22);
-
+	//Obstaccle
 	
+	for (auto i = 0; i < 100; i++)
+	{
+		m_Obstacle = std::make_shared<Sprite2D>(model, shader, hero);
+		m_Obstacle->SetSize(21, 22);
+		m_Obstacle->Set2DPosition(150 * (i + 1), 380);
+		m_listObstacle.push_back(m_Obstacle);
+	}
 	//button back
 	texture = ResourceManagers::GetInstance()->GetTexture("button_back");
 	std::shared_ptr<GameButton> button = std::make_shared<GameButton>(model, shader, texture);
@@ -62,25 +72,28 @@ void GSPlay::Init()
 	});
 	m_listButton.push_back(button);
 
-	
+	for (int i = 0; i < 50; i++) 
+	{
+		shader = ResourceManagers::GetInstance()->GetShader("Animation");
+		texture = ResourceManagers::GetInstance()->GetTexture("coin1");
+		std::shared_ptr<Coin> obj = std::make_shared<Coin>(model, shader, texture, 6, 0.1f);
+		obj->Set2DPosition(180*(i+1), 330);
+		obj->SetSize(20, 20);
+		m_listCoin1.push_back(obj);
+	}
 	//coin1
 	shader = ResourceManagers::GetInstance()->GetShader("Animation");
 	texture = ResourceManagers::GetInstance()->GetTexture("coin1");
-	std::shared_ptr<SpriteAnimation> obj = std::make_shared<SpriteAnimation>(model, shader, texture, 6, 0.1f);
-	obj->Set2DPosition(130, 330);
-	obj->SetSize(20, 20);
-	m_listSpriteAnimations1.push_back(obj);
-	//m_listCoinAnimations[0].push_back(obj);
-	//coin
-	obj = std::make_shared<SpriteAnimation>(model, shader, texture, 6, 0.1f);
-	obj->Set2DPosition(180, 330);
-	obj->SetSize(20, 20);
-	m_listSpriteAnimations1.push_back(obj);
-	//m_listCoinAnimations[1].push_back(obj);
+	std::shared_ptr<Coin> obj1 = std::make_shared<Coin>(model, shader, texture, 6, 0.1f);
+	obj1->Set2DPosition(100, 330);
+	obj1->SetSize(20, 20);
+	m_listCoin1.push_back(obj1);
+	
+	
 	// Animation
 	shader = ResourceManagers::GetInstance()->GetShader("Animation");
 	texture = ResourceManagers::GetInstance()->GetTexture("run");
-	obj = std::make_shared<SpriteAnimation>(model, shader, texture, 10, 0.1f);
+	std::shared_ptr<SpriteAnimation> obj = std::make_shared<SpriteAnimation>(model, shader, texture, 10, 0.1f);
 	obj->Set2DPosition(50, 360);
 	obj->SetSize(52, 52);
 	m_listSpriteAnimations.push_back(obj);
@@ -98,7 +111,9 @@ void GSPlay::Init()
 	std::shared_ptr<Font> font = ResourceManagers::GetInstance()->GetFont("arialbd");
 	m_score = std::make_shared< Text>(shader, font, std::to_string(score), TEXT_COLOR::RED, 1.0);
 	m_score->Set2DPosition(Vector2(20, 25));
-	ResourceManagers::GetInstance()->PauseSound("bground");
+
+	
+	//ResourceManagers::GetInstance()->PlaySound("1");
 }
 
 void GSPlay::Exit()
@@ -164,10 +179,10 @@ void GSPlay::Update(float deltaTime)
 	deltaJump = deltaTime;
 	m_BackGround->Update(deltaTime);
 	m_BackGround1->Update(deltaTime);
-	m_score->Update(deltaTime);
+	
 	Vector2 p_Background = m_BackGround->Get2DPosition();
 	Vector2 p_Background1 = m_BackGround1->Get2DPosition();
-	deltaMove = 70 * deltaTime;
+	deltaMove = 50 * deltaTime;
 	if (p_Background1.x - deltaMove > -screenWidth / 2) {
 		m_BackGround1->Set2DPosition(p_Background1.x - deltaMove, p_Background1.y);
 	}
@@ -186,27 +201,55 @@ void GSPlay::Update(float deltaTime)
 	 //setup state hero
 	 if ((stateHero == 1) && (timeJump > 0)){
 		 timeJump = timeJump - deltaTime;
+		 Vector2 jumpP = m_listActiveAnimations[0]->Get2DPosition();
+		 m_listActiveAnimations[0]->Set2DPosition(jumpP.x + 2, jumpP.y);
 	 }
 	 else {
 		 Vector2 runPosition = m_listSpriteAnimations[0]->Get2DPosition();
-		// m_listSpriteAnimations[0]->Set2DPosition(runPosition.x + 10, runPosition.y);
+		 if (distanJump == true) {
+			 m_listSpriteAnimations[0]->Set2DPosition(runPosition.x + 20, runPosition.y);
+			 distanJump = false;
+		 }
+		
 		 m_listActiveAnimations.pop_back();
 		 m_listActiveAnimations.push_back(m_listSpriteAnimations[0]);
 		 stateHero = 0;
-		 timeJump = 50;
+		 timeJump = 8;
 	 }
 	 // get coin
 	 Vector2 positionHero = m_listActiveAnimations[0]->Get2DPosition();
-	 for (auto it : m_listSpriteAnimations1) {
+	 for (auto it : m_listCoin1) {
 		 Vector2 positionCoin = it->Get2DPosition();
 		 int p = positionHero.x - positionCoin.x;
-		 if ((p<25) && (p>-25) && (positionHero.y == positionCoin.y))
+		 if ((p<25) && (p>-25) && (positionHero.y == positionCoin.y) && (eatCoin == true))
 		 {
-			 score = score + 1;
+			 score = score + 10;
+			 eatCoin = false;
 			 //m_listSpriteAnimations1.pop_back();
-			 printf("a");
+			 
+			 int activeCoin = it->getActive();
+			 if (activeCoin == 1) {
+				 activeCoin = 0;
+			 }
+			 it->setActive(activeCoin);
+			 
+			 printf("%d", activeCoin);
 			 
 		 }
+	 }
+	 // GameOver
+	 for (auto it : m_listObstacle) {
+		 Vector2 poistionObstacle = it->Get2DPosition();
+		 int  p = positionHero.x - poistionObstacle.x;
+		 if ((p < 10) && (p > -10) && ((poistionObstacle.y+20) == positionHero.y)) {
+			 isGameOver = true;
+			 printf("aa");
+		 }
+	 }
+	 //setState GameOver
+	 if (isGameOver) {
+		 GameStateMachine::GetInstance()->PopState();
+		 GameStateMachine::GetInstance()->ChangeState(StateTypes::STATE_GameOver);
 	 }
 
 	for (auto it1 : m_listButton)
@@ -221,7 +264,25 @@ void GSPlay::Update(float deltaTime)
 	it->Update(deltaTime);
 	}
 
-	
+	for (auto it : m_listObstacle) {
+		Vector2 oldObstacle = it->Get2DPosition();
+		it->Set2DPosition(oldObstacle.x - 50 * deltaTime, oldObstacle.y);
+		it->Update(deltaTime);
+	}
+	for (auto it : m_listCoin1) {
+		
+			Vector2 oldCoin = it->Get2DPosition();
+			it->Set2DPosition(oldCoin.x - 50 * deltaTime, oldCoin.y);
+			it->Update(deltaTime);
+		
+		
+	}
+
+	auto shader = ResourceManagers::GetInstance()->GetShader("TextureShader");
+	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
+	std::shared_ptr<Font> font = ResourceManagers::GetInstance()->GetFont("arialbd");
+	m_score = std::make_shared< Text>(shader, font, std::to_string(score), TEXT_COLOR::RED, 1.0);
+	m_score->Set2DPosition(Vector2(20, 25));
 
 }
 
@@ -231,7 +292,7 @@ void GSPlay::Draw()
 	m_BackGround1->Draw();
 	
 	m_score->Draw();
-	m_Hero->Draw();
+
 	for (auto it1 : m_listButton)
 	{
 		it1->Draw();
@@ -245,6 +306,15 @@ void GSPlay::Draw()
 	for (auto obj : m_listActiveAnimations)
 	{
 		obj->Draw();
+	}
+	for (auto it : m_listObstacle) {
+		it->Draw();
+	}
+	for (auto it : m_listCoin1) {
+		if (it->activeCoin == 1) {
+			it->Draw();
+		}
+		
 	}
 	
 }
@@ -261,4 +331,6 @@ void GSPlay::Jump() {
 	heroJump->Set2DPosition(jumpPosition.x, jumpPosition.y - 30);
 	m_listActiveAnimations.push_back(heroJump);
 	stateHero = 1;
+	eatCoin = true;
+	distanJump = true;
 }
