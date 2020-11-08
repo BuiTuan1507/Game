@@ -44,7 +44,7 @@ void GSPlay::Init()
 
 	//Background1
 	m_BackGround1 = std::make_shared<Sprite2D>(model, shader, texture);
-	m_BackGround1->Set2DPosition(3/2 * screenWidth , screenHeight / 2);
+	m_BackGround1->Set2DPosition(1.5 * screenWidth , screenHeight / 2);
 	m_BackGround1->SetSize(screenWidth, screenHeight);
 	//Hero
 	m_Hero = std::make_shared<Sprite2D>(model, shader, hero);
@@ -98,6 +98,7 @@ void GSPlay::Init()
 	std::shared_ptr<Font> font = ResourceManagers::GetInstance()->GetFont("arialbd");
 	m_score = std::make_shared< Text>(shader, font, std::to_string(score), TEXT_COLOR::RED, 1.0);
 	m_score->Set2DPosition(Vector2(20, 25));
+	ResourceManagers::GetInstance()->PauseSound("bground");
 }
 
 void GSPlay::Exit()
@@ -166,13 +167,20 @@ void GSPlay::Update(float deltaTime)
 	m_score->Update(deltaTime);
 	Vector2 p_Background = m_BackGround->Get2DPosition();
 	Vector2 p_Background1 = m_BackGround1->Get2DPosition();
-	deltaMove += deltaTime;
+	deltaMove = 70 * deltaTime;
 	if (p_Background1.x - deltaMove > -screenWidth / 2) {
 		m_BackGround1->Set2DPosition(p_Background1.x - deltaMove, p_Background1.y);
 	}
 	else
 	{
 		m_BackGround1->Set2DPosition(p_Background1.x - deltaMove + 2 * screenWidth, p_Background1.y);
+	}
+	if (p_Background.x - deltaMove > -screenWidth / 2) {
+		m_BackGround->Set2DPosition(p_Background.x - deltaMove, p_Background.y);
+	}
+	else
+	{
+		m_BackGround->Set2DPosition(p_Background.x - deltaMove + 2 * screenWidth, p_Background.y);
 	}
 
 	 //setup state hero
