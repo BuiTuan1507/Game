@@ -27,6 +27,7 @@ std::shared_ptr<GameStateBase> GameStateBase::CreateState(StateTypes stt)
 		break;
 	case STATE_HighScore:
 		gs = std::make_shared<GSHighScore>();
+		break;
 	case STATE_GameOver:
 		gs = std::make_shared<GSGameOver>();
 	default:

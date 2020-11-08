@@ -2,10 +2,10 @@
 
 extern int screenWidth; //need get on Graphic engine
 extern int screenHeight; //need get on Graphic engine
-
+extern bool isGameOver;
 GSHighScore::GSHighScore()
 {
-
+	isGameOver = false;
 }
 
 

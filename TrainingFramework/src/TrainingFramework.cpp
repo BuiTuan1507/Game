@@ -7,6 +7,7 @@ GLint screenWidth = 800;
 GLint screenHeight = 480;
 
 
+
 GLint Init(ESContext* esContext)
 {
 	Application::GetInstance()->Init();

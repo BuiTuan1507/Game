@@ -15,7 +15,7 @@
 
 extern int screenWidth; //need get on Graphic engine
 extern int screenHeight; //need get on Graphic engine
-int score = 0;
+ int score = 0;
 bool keyUP = false;
 bool eatCoin = false;
 bool distanJump = false;
@@ -27,6 +27,7 @@ bool isGameOver = false;
 
 GSPlay::GSPlay()
 {
+	isGameOver = false;
 }
 
 
@@ -241,7 +242,7 @@ void GSPlay::Update(float deltaTime)
 	 for (auto it : m_listObstacle) {
 		 Vector2 poistionObstacle = it->Get2DPosition();
 		 int  p = positionHero.x - poistionObstacle.x;
-		 if ((p < 10) && (p > -10) && ((poistionObstacle.y+20) == positionHero.y)) {
+		 if ((p < 10) && (p > -10) && ((poistionObstacle.y-20) == positionHero.y)) {
 			 isGameOver = true;
 			 printf("aa");
 		 }

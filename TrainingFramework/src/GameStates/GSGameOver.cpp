@@ -2,7 +2,7 @@
 
 extern int screenWidth; //need get on Graphic engine
 extern int screenHeight; //need get on Graphic engine
-
+extern int score;
 GSGameOver::GSGameOver()
 {
 
@@ -42,30 +42,16 @@ void  GSGameOver::Init()
 	//text game title score
 	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
 	std::shared_ptr<Font> font = ResourceManagers::GetInstance()->GetFont("arialbd");
-	std::shared_ptr<Text> m_Text_gameName1 = std::make_shared< Text>(shader, font, "HIGH SCORE", TEXT_COLOR::RED, 1.0);
-	m_Text_gameName1->Set2DPosition(Vector2(screenWidth / 2 - 80, 50));
+	std::shared_ptr<Text> m_Text_gameName1 = std::make_shared< Text>(shader, font, "GAME OVER", TEXT_COLOR::RED, 2.0);
+	m_Text_gameName1->Set2DPosition(Vector2(screenWidth / 2 -100, 120));
 	m_Text_gameName.push_back(m_Text_gameName1);
 
 	//text game title highscore 1
 	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
 	font = ResourceManagers::GetInstance()->GetFont("arialbd");
-	m_Text_gameName1 = std::make_shared< Text>(shader, font, "100", TEXT_COLOR::RED, 1.0);
-	m_Text_gameName1->Set2DPosition(Vector2(screenWidth / 2 - 80, 130));
-	m_Text_gameName.push_back(m_Text_gameName1);
+	m_score = std::make_shared< Text>(shader, font, std::to_string(score), TEXT_COLOR::RED, 1.2);
+	m_score->Set2DPosition(Vector2(screenWidth/2-80, 225));
 
-	//text game title
-	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
-	font = ResourceManagers::GetInstance()->GetFont("arialbd");
-	m_Text_gameName1 = std::make_shared< Text>(shader, font, "40", TEXT_COLOR::RED, 1.0);
-	m_Text_gameName1->Set2DPosition(Vector2(screenWidth / 2 - 80, 180));
-	m_Text_gameName.push_back(m_Text_gameName1);
-
-	//text game title
-	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
-	font = ResourceManagers::GetInstance()->GetFont("arialbd");
-	m_Text_gameName1 = std::make_shared< Text>(shader, font, "10", TEXT_COLOR::RED, 1.0);
-	m_Text_gameName1->Set2DPosition(Vector2(screenWidth / 2 - 80, 230));
-	m_Text_gameName.push_back(m_Text_gameName1);
 }
 
 void  GSGameOver::Exit()
@@ -122,4 +108,5 @@ void  GSGameOver::Draw()
 	for (auto it : m_Text_gameName) {
 		it->Draw();
 	}
+	m_score->Draw();
 }

@@ -5,7 +5,7 @@ extern int screenHeight; //need get on Graphic engine
 
 GSMenu::GSMenu()
 {
-
+	
 }
 
 
