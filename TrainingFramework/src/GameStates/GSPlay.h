@@ -21,7 +21,7 @@ public:
 
 	void Pause();
 	void Resume();
-
+	
 	void HandleEvents();
 	void HandleKeyEvents(int key, bool bIsPressed);
 
@@ -33,6 +33,7 @@ public:
 	void SetNewPostionForBullet();
 	void giveCoin();
 	void Jump();
+	void Down();
 
 private:
 
@@ -42,10 +43,16 @@ private:
 	std::shared_ptr<Sprite2D> m_Hero;
 	std::shared_ptr<Sprite2D> m_Obstacle;
 	std::shared_ptr<Coin> m_Coin;
+
+	std::shared_ptr<SpriteAnimation> m_Bird;
 	std::shared_ptr<Text>  m_score;
+	std::shared_ptr<GameButton> m_PauseGame;
 	std::list<std::shared_ptr<GameButton>>	m_listButton;
+
+	std::vector<std::shared_ptr<SpriteAnimation>> m_listBird;
 	std::vector<std::shared_ptr<Sprite2D>> m_listObstacle;
 	std::vector<std::shared_ptr<Coin>> m_listCoin1;
+	std::shared_ptr<SpriteAnimation> heroNam;
 	std::shared_ptr<SpriteAnimation > heroJump;
 	std::shared_ptr<SpriteAnimation > heroPopState;
 

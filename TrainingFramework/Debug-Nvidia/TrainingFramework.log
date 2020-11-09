@@ -1,18 +1,23 @@
-﻿  GameStatebase.cpp
-  Generating Code...
-  Compiling...
-  GameStateMachine.cpp
-  GSPlay.cpp
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(50): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(55): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(55): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(63): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(81): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(180): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(186): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(204): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(224): warning C4244: 'initializing': conversion from 'GLfloat' to 'int', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(244): warning C4244: 'initializing': conversion from 'GLfloat' to 'int', possible loss of data
+﻿  GSPlay.cpp
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(78): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(83): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(83): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(105): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(135): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(152): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(251): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(253): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(256): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(259): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(285): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(305): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(316): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(335): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(350): warning C4244: 'initializing': conversion from 'GLfloat' to 'int', possible loss of data
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(351): warning C4244: 'initializing': conversion from 'GLfloat' to 'int', possible loss of data
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(371): warning C4244: 'initializing': conversion from 'GLfloat' to 'int', possible loss of data
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(380): warning C4244: 'initializing': conversion from 'GLfloat' to 'int', possible loss of data
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(381): warning C4244: 'initializing': conversion from 'GLfloat' to 'int', possible loss of data
 c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(901): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(971): note: see reference to function template instantiation 'std::_Ref_count_obj<_Ty>::_Ref_count_obj<std::shared_ptr<Shaders>&,std::shared_ptr<Font>&,std::basic_string<char,std::char_traits<char>,std::allocator<char>>,TEXT_COLOR,double>(std::shared_ptr<Shaders> &,std::shared_ptr<Font> &,std::basic_string<char,std::char_traits<char>,std::allocator<char>> &&,TEXT_COLOR &&,double &&)' being compiled
           with
@@ -24,62 +29,6 @@ c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(901): warn
           [
               _Ty=Text
           ]
-  c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(113): note: see reference to function template instantiation 'std::shared_ptr<Text> std::make_shared<Text,std::shared_ptr<Shaders>&,std::shared_ptr<Font>&,std::string,TEXT_COLOR,double>(std::shared_ptr<Shaders> &,std::shared_ptr<Font> &,std::string &&,TEXT_COLOR &&,double &&)' being compiled
-  GSMenu.cpp
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsmenu.cpp(26): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsmenu.cpp(32): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsmenu.cpp(41): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsmenu.cpp(51): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsmenu.cpp(64): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(901): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(971): note: see reference to function template instantiation 'std::_Ref_count_obj<_Ty>::_Ref_count_obj<std::shared_ptr<Shaders>&,std::shared_ptr<Font>&,const char(&)[15],TEXT_COLOR,double>(std::shared_ptr<Shaders> &,std::shared_ptr<Font> &,const char (&)[15],TEXT_COLOR &&,double &&)' being compiled
-          with
-          [
-              _Ty=Text
-          ]
-  c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(971): note: see reference to function template instantiation 'std::_Ref_count_obj<_Ty>::_Ref_count_obj<std::shared_ptr<Shaders>&,std::shared_ptr<Font>&,const char(&)[15],TEXT_COLOR,double>(std::shared_ptr<Shaders> &,std::shared_ptr<Font> &,const char (&)[15],TEXT_COLOR &&,double &&)' being compiled
-          with
-          [
-              _Ty=Text
-          ]
-  c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsmenu.cpp(63): note: see reference to function template instantiation 'std::shared_ptr<Text> std::make_shared<Text,std::shared_ptr<Shaders>&,std::shared_ptr<Font>&,const char(&)[15],TEXT_COLOR,double>(std::shared_ptr<Shaders> &,std::shared_ptr<Font> &,const char (&)[15],TEXT_COLOR &&,double &&)' being compiled
-  GSIntro.cpp
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsintro.cpp(26): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-  GSHighScore.cpp
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gshighscore.cpp(26): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gshighscore.cpp(46): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gshighscore.cpp(53): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gshighscore.cpp(60): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gshighscore.cpp(67): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(901): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(971): note: see reference to function template instantiation 'std::_Ref_count_obj<_Ty>::_Ref_count_obj<std::shared_ptr<Shaders>&,std::shared_ptr<Font>&,const char(&)[11],TEXT_COLOR,double>(std::shared_ptr<Shaders> &,std::shared_ptr<Font> &,const char (&)[11],TEXT_COLOR &&,double &&)' being compiled
-          with
-          [
-              _Ty=Text
-          ]
-  c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(971): note: see reference to function template instantiation 'std::_Ref_count_obj<_Ty>::_Ref_count_obj<std::shared_ptr<Shaders>&,std::shared_ptr<Font>&,const char(&)[11],TEXT_COLOR,double>(std::shared_ptr<Shaders> &,std::shared_ptr<Font> &,const char (&)[11],TEXT_COLOR &&,double &&)' being compiled
-          with
-          [
-              _Ty=Text
-          ]
-  c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gshighscore.cpp(45): note: see reference to function template instantiation 'std::shared_ptr<Text> std::make_shared<Text,std::shared_ptr<Shaders>&,std::shared_ptr<Font>&,const char(&)[11],TEXT_COLOR,double>(std::shared_ptr<Shaders> &,std::shared_ptr<Font> &,const char (&)[11],TEXT_COLOR &&,double &&)' being compiled
-  GSGameOver.cpp
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsgameover.cpp(26): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsgameover.cpp(46): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsgameover.cpp(53): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(901): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(971): note: see reference to function template instantiation 'std::_Ref_count_obj<_Ty>::_Ref_count_obj<std::shared_ptr<Shaders>&,std::shared_ptr<Font>&,const char(&)[10],TEXT_COLOR,double>(std::shared_ptr<Shaders> &,std::shared_ptr<Font> &,const char (&)[10],TEXT_COLOR &&,double &&)' being compiled
-          with
-          [
-              _Ty=Text
-          ]
-  c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(971): note: see reference to function template instantiation 'std::_Ref_count_obj<_Ty>::_Ref_count_obj<std::shared_ptr<Shaders>&,std::shared_ptr<Font>&,const char(&)[10],TEXT_COLOR,double>(std::shared_ptr<Shaders> &,std::shared_ptr<Font> &,const char (&)[10],TEXT_COLOR &&,double &&)' being compiled
-          with
-          [
-              _Ty=Text
-          ]
-  c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsgameover.cpp(45): note: see reference to function template instantiation 'std::shared_ptr<Text> std::make_shared<Text,std::shared_ptr<Shaders>&,std::shared_ptr<Font>&,const char(&)[10],TEXT_COLOR,double>(std::shared_ptr<Shaders> &,std::shared_ptr<Font> &,const char (&)[10],TEXT_COLOR &&,double &&)' being compiled
-  Application.cpp
-  Generating Code...
+  c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(182): note: see reference to function template instantiation 'std::shared_ptr<Text> std::make_shared<Text,std::shared_ptr<Shaders>&,std::shared_ptr<Font>&,std::string,TEXT_COLOR,double>(std::shared_ptr<Shaders> &,std::shared_ptr<Font> &,std::string &&,TEXT_COLOR &&,double &&)' being compiled
   TrainingFramework.vcxproj -> C:\Users\Microsoft Windows\Desktop\Programming_lesson_06\\BIN-Nvidia\TrainingFramework.exe
   TrainingFramework.vcxproj -> C:\Users\Microsoft Windows\Desktop\Programming_lesson_06\\BIN-Nvidia\TrainingFramework.pdb (Full PDB)
