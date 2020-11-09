@@ -148,7 +148,7 @@ void GSPlay::Init()
 	{
 		shader = ResourceManagers::GetInstance()->GetShader("Animation");
 		texture = ResourceManagers::GetInstance()->GetTexture("bird");
-		m_Bird = std::make_shared<SpriteAnimation>(model, shader, texture, 8, 0.08f);
+		m_Bird = std::make_shared<SpriteAnimation>(model, shader, texture, 8, 0.06f);
 		m_Bird->Set2DPosition(600 * (i+1), 340);
 		m_Bird->SetSize(60, 40);
 		m_listBird.push_back(m_Bird);
@@ -157,7 +157,7 @@ void GSPlay::Init()
 	// Animation
 	shader = ResourceManagers::GetInstance()->GetShader("Animation");
 	texture = ResourceManagers::GetInstance()->GetTexture("runrun");
-	std::shared_ptr<SpriteAnimation> obj = std::make_shared<SpriteAnimation>(model, shader, texture, 8, 0.1f);
+	std::shared_ptr<SpriteAnimation> obj = std::make_shared<SpriteAnimation>(model, shader, texture, 8, 0.08f);
 	obj->Set2DPosition(50, 360);
 	obj->SetSize(60, 60);
 	m_listSpriteAnimations.push_back(obj);
@@ -165,14 +165,14 @@ void GSPlay::Init()
 
 	shader = ResourceManagers::GetInstance()->GetShader("Animation");
 	texture = ResourceManagers::GetInstance()->GetTexture("jump");
-	heroJump = std::make_shared<SpriteAnimation>(model, shader, texture, 10, 0.1f);
+	heroJump = std::make_shared<SpriteAnimation>(model, shader, texture, 10, 0.08f);
 	heroJump->Set2DPosition(250, 360);
 	heroJump->SetSize(60, 60);
 	m_listSpriteAnimations.push_back(obj);
 
 	shader = ResourceManagers::GetInstance()->GetShader("Animation");
 	texture = ResourceManagers::GetInstance()->GetTexture("namnam");
-	heroNam = std::make_shared<SpriteAnimation>(model, shader, texture, 10, 0.1f);
+	heroNam = std::make_shared<SpriteAnimation>(model, shader, texture, 10, 0.08f);
 	heroNam->Set2DPosition(150, 360);
 	heroNam->SetSize(52, 52);
 	m_listSpriteAnimations.push_back(obj);

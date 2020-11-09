@@ -18,7 +18,7 @@ GSHighScore::~GSHighScore()
 void GSHighScore::Init()
 {
 	auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D");
-	auto texture = ResourceManagers::GetInstance()->GetTexture("bg_menu_top");
+	auto texture = ResourceManagers::GetInstance()->GetTexture("bg");
 
 	//BackGround
 	auto shader = ResourceManagers::GetInstance()->GetShader("TextureShader");
