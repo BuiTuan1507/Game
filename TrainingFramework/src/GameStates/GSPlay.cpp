@@ -183,7 +183,7 @@ void GSPlay::Init()
 	m_score->Set2DPosition(Vector2(20, 25));
 
 	
-	//ResourceManagers::GetInstance()->PlaySound("1");
+	ResourceManagers::GetInstance()->PlaySound("1");
 }
 
 void GSPlay::Exit()

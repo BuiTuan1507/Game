@@ -1,34 +1,4 @@
-﻿  GSPlay.cpp
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(78): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(83): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(83): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(105): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(135): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(152): warning C4244: 'argument': conversion from 'int' to 'GLfloat', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(251): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(253): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(256): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(259): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(285): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(305): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(316): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(335): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(350): warning C4244: 'initializing': conversion from 'GLfloat' to 'int', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(351): warning C4244: 'initializing': conversion from 'GLfloat' to 'int', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(371): warning C4244: 'initializing': conversion from 'GLfloat' to 'int', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(380): warning C4244: 'initializing': conversion from 'GLfloat' to 'int', possible loss of data
-c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(381): warning C4244: 'initializing': conversion from 'GLfloat' to 'int', possible loss of data
-c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(901): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(971): note: see reference to function template instantiation 'std::_Ref_count_obj<_Ty>::_Ref_count_obj<std::shared_ptr<Shaders>&,std::shared_ptr<Font>&,std::basic_string<char,std::char_traits<char>,std::allocator<char>>,TEXT_COLOR,double>(std::shared_ptr<Shaders> &,std::shared_ptr<Font> &,std::basic_string<char,std::char_traits<char>,std::allocator<char>> &&,TEXT_COLOR &&,double &&)' being compiled
-          with
-          [
-              _Ty=Text
-          ]
-  c:\program files (x86)\microsoft visual studio 14.0\vc\include\memory(971): note: see reference to function template instantiation 'std::_Ref_count_obj<_Ty>::_Ref_count_obj<std::shared_ptr<Shaders>&,std::shared_ptr<Font>&,std::basic_string<char,std::char_traits<char>,std::allocator<char>>,TEXT_COLOR,double>(std::shared_ptr<Shaders> &,std::shared_ptr<Font> &,std::basic_string<char,std::char_traits<char>,std::allocator<char>> &&,TEXT_COLOR &&,double &&)' being compiled
-          with
-          [
-              _Ty=Text
-          ]
-  c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamestates\gsplay.cpp(182): note: see reference to function template instantiation 'std::shared_ptr<Text> std::make_shared<Text,std::shared_ptr<Shaders>&,std::shared_ptr<Font>&,std::string,TEXT_COLOR,double>(std::shared_ptr<Shaders> &,std::shared_ptr<Font> &,std::string &&,TEXT_COLOR &&,double &&)' being compiled
+﻿Application.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+LINK : warning LNK4098: defaultlib 'LIBCMTD' conflicts with use of other libs; use /NODEFAULTLIB:library
   TrainingFramework.vcxproj -> C:\Users\Microsoft Windows\Desktop\Programming_lesson_06\\BIN-Nvidia\TrainingFramework.exe
   TrainingFramework.vcxproj -> C:\Users\Microsoft Windows\Desktop\Programming_lesson_06\\BIN-Nvidia\TrainingFramework.pdb (Full PDB)

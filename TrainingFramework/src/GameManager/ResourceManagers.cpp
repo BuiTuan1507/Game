@@ -19,8 +19,8 @@ ResourceManagers::ResourceManagers()
 
 	//Sound
 	m_SoundsPath = dataPath + "Sounds\\";
-	//m_Soloud = std::make_shared<SoLoud::Soloud>();
-	//m_Soloud->init();
+	m_Soloud = std::make_shared<SoLoud::Soloud>();
+	m_Soloud->init();
 
 }
 ResourceManagers::~ResourceManagers()
