@@ -1,1 +1,66 @@
-﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.Cpp.Platform.targets(57,5): error MSB8020: The build tools for v142 (Platform Toolset = 'v142') cannot be found. To build using the v142 build tools, please install v142 build tools.  Alternatively, you may upgrade to the current Visual Studio tools by selecting the Project menu or right-click the solution, and then selecting "Retarget solution".
+﻿  Application.cpp
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\GameManager/ResourceManagers.h(13): fatal error C1083: Cannot open include file: 'soloud.h': No such file or directory
+  ResourceManagers.cpp
+c:\users\microsoft windows\desktop\programming_lesson_06\trainingframework\src\gamemanager\ResourceManagers.h(13): fatal error C1083: Cannot open include file: 'soloud.h': No such file or directory
+  Coin.cpp
+  Font.cpp
+  GameButton.cpp
+  Hero.cpp
+  Obstacle.cpp
+  Sprite2D.cpp
+src\GameObject\Sprite2D.cpp(144): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+src\GameObject\Sprite2D.cpp(145): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+src\GameObject\Sprite2D.cpp(155): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+src\GameObject\Sprite2D.cpp(156): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Camera.cpp
+  Sprite3D.cpp
+  Models.cpp
+src\GameObject\Models.cpp(25): warning C4244: 'initializing': conversion from 'std::streamoff' to 'std::size_t', possible loss of data
+src\GameObject\Models.cpp(10): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'const std::string'
+src\GameObject\Models.cpp(13): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'const std::string'
+src\GameObject\Models.cpp(35): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): note: see declaration of 'sscanf'
+src\GameObject\Models.cpp(40): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): note: see declaration of 'sscanf'
+src\GameObject\Models.cpp(62): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): note: see declaration of 'sscanf'
+src\GameObject\Models.cpp(68): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): note: see declaration of 'sscanf'
+  Shaders.cpp
+src\GameObject\Shaders.cpp(21): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'const std::string'
+src\GameObject\Shaders.cpp(21): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 2 has type 'const std::string'
+src\GameObject\Shaders.cpp(25): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'const std::string'
+src\GameObject\Shaders.cpp(32): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'const std::string'
+src\GameObject\Shaders.cpp(44): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'const std::string'
+src\GameObject\Shaders.cpp(44): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 2 has type 'const std::string'
+  SpriteAnimation.cpp
+src\GameObject\SpriteAnimation.cpp(105): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+src\GameObject\SpriteAnimation.cpp(110): warning C4244: 'argument': conversion from 'GLint' to 'GLfloat', possible loss of data
+src\GameObject\SpriteAnimation.cpp(138): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+src\GameObject\SpriteAnimation.cpp(139): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+src\GameObject\SpriteAnimation.cpp(149): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+src\GameObject\SpriteAnimation.cpp(150): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Text.cpp
+src\GameObject\Text.cpp(24): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+src\GameObject\Text.cpp(25): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+src\GameObject\Text.cpp(172): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+src\GameObject\Text.cpp(173): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+src\GameObject\Text.cpp(183): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+src\GameObject\Text.cpp(184): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Texture.cpp
+  GSGameOver.cpp
+C:\Users\Microsoft Windows\Desktop\Programming_lesson_06\TrainingFramework\src\GameManager/ResourceManagers.h(13): fatal error C1083: Cannot open include file: 'soloud.h': No such file or directory
+  GameStatebase.cpp
+C:\Users\Microsoft Windows\Desktop\Programming_lesson_06\TrainingFramework\src\GameManager/ResourceManagers.h(13): fatal error C1083: Cannot open include file: 'soloud.h': No such file or directory
+  GameStateMachine.cpp
+C:\Users\Microsoft Windows\Desktop\Programming_lesson_06\TrainingFramework\src\GameManager/ResourceManagers.h(13): fatal error C1083: Cannot open include file: 'soloud.h': No such file or directory
+  GSHighScore.cpp
+C:\Users\Microsoft Windows\Desktop\Programming_lesson_06\TrainingFramework\src\GameManager/ResourceManagers.h(13): fatal error C1083: Cannot open include file: 'soloud.h': No such file or directory
+  GSIntro.cpp
+C:\Users\Microsoft Windows\Desktop\Programming_lesson_06\TrainingFramework\src\GameManager/ResourceManagers.h(13): fatal error C1083: Cannot open include file: 'soloud.h': No such file or directory
+  Compiling...
+  GSMenu.cpp
+C:\Users\Microsoft Windows\Desktop\Programming_lesson_06\TrainingFramework\src\GameManager/ResourceManagers.h(13): fatal error C1083: Cannot open include file: 'soloud.h': No such file or directory
+  GSPlay.cpp
+C:\Users\Microsoft Windows\Desktop\Programming_lesson_06\TrainingFramework\src\GameManager/ResourceManagers.h(13): fatal error C1083: Cannot open include file: 'soloud.h': No such file or directory
+  TrainingFramework.cpp

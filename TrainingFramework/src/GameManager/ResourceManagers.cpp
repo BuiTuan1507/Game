@@ -8,7 +8,6 @@
 #include "GameObject/Sprite3D.h"
 #include "GameObject/Text.h"
 
-
 ResourceManagers::ResourceManagers()
 {
 	std::string dataPath = "..\\Data\\";

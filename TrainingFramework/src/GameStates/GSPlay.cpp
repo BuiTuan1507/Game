@@ -34,6 +34,12 @@ int timeBetwenTwoDown = 3;
 bool canDown;
 bool afterJump; // sau khi nhay , can xac dinh de giam thoi gian 2 lan nhay
 bool afterDown;// tuong tu voi nhay
+int jumpX;
+int jumpY;
+int downX;
+bool halfJump; // 1/2 parabol nhay
+int giatoc;
+int giatoc1;
 GSPlay::GSPlay()
 {
 	isGameOver = false;
@@ -48,13 +54,17 @@ GSPlay::GSPlay()
 	timeJump = 10;
 	deltaMove = 0;
 	deltaJump = 0;
-	
 	timeBetwenTwoJump = 4;// thoi gian co the giua hai lan nhay
-	
 	timeDown = 6;
 	timeBetwenTwoDown = 3;
 	afterJump = false;
 	afterDown = false;
+	jumpX = 0;
+	jumpY = 0;
+	downX = 0;
+	halfJump = true;
+	giatoc = 1;
+	giatoc1 = 1;
 }
 
 
@@ -148,7 +158,7 @@ void GSPlay::Init()
 	{
 		shader = ResourceManagers::GetInstance()->GetShader("Animation");
 		texture = ResourceManagers::GetInstance()->GetTexture("bird");
-		m_Bird = std::make_shared<SpriteAnimation>(model, shader, texture, 8, 0.06f);
+		m_Bird = std::make_shared<SpriteAnimation>(model, shader, texture, 8, 0.08f);
 		m_Bird->Set2DPosition(600 * (i+1), 340);
 		m_Bird->SetSize(60, 40);
 		m_listBird.push_back(m_Bird);
@@ -279,19 +289,38 @@ void GSPlay::Update(float deltaTime)
 		}
 
 		
-		//setup state hero
+		//Jump
 		if ((stateHero == 1) && (timeJump > 0))
 		{
 			timeJump = timeJump - deltaTime;
 			Vector2 jumpP = m_listActiveAnimations[0]->Get2DPosition();
-			m_listActiveAnimations[0]->Set2DPosition(jumpP.x + 2, jumpP.y + 1.5f);
+			giatoc += 0.5f;
+			if ((jumpY <= 40) && (jumpX <=20) && (halfJump == true)) {
+				m_listActiveAnimations[0]->Set2DPosition(jumpP.x + 4, jumpP.y - 8);
+				jumpX += 2 * giatoc;
+				jumpY += 8 * giatoc;
+			}
+			else if ((jumpY >= 40) || (jumpX >= 20) && (halfJump == true))
+			{
+				m_listActiveAnimations[0]->Set2DPosition(jumpP.x + 5, jumpP.y);
+				halfJump = false;
+			}
+			if (halfJump == false)
+			{
+				if (jumpP.y <= 360)
+				{
+					m_listActiveAnimations[0]->Set2DPosition(jumpP.x + 3, jumpP.y + 8);
+				}
+			}
+			
+			
 		}
 		else if ((stateHero == 1) && (timeJump <= 0)) 
 		{
 			Vector2 runPosition = m_listSpriteAnimations[0]->Get2DPosition();
 			if (distanJump == true)
 			{
-				m_listSpriteAnimations[0]->Set2DPosition(runPosition.x + 20, runPosition.y);
+				m_listSpriteAnimations[0]->Set2DPosition(runPosition.x + 30, runPosition.y);
 				distanJump = false;
 			}
 			
@@ -299,6 +328,8 @@ void GSPlay::Update(float deltaTime)
 			m_listActiveAnimations.push_back(m_listSpriteAnimations[0]);
 			stateHero = 0;
 			timeJump = 8;
+			jumpX = 0;
+			jumpY = 0;
 		}
 		//Khoang cach giua hai lan nhay
 		if ((timeBetwenTwoJump > 0) && (afterJump == true)) {
@@ -310,18 +341,19 @@ void GSPlay::Update(float deltaTime)
 			afterJump = false;
 			canJump = true;
 		}
-
+		//Down
 
 		if ((stateHero == 2) && (timeDown > 0)) {
 			timeDown = timeDown - deltaTime;
 			Vector2 downP = m_listActiveAnimations[0]->Get2DPosition();
-			m_listActiveAnimations[0]->Set2DPosition(downP.x + 2, downP.y);
+			m_listActiveAnimations[0]->Set2DPosition(downP.x + 6, downP.y);
+			
 		}
 		else if ((stateHero == 2) && (timeDown <= 0))
 		{
 			Vector2 runPosition1 = m_listSpriteAnimations[0]->Get2DPosition();
 			if (distanDown == true) {
-				m_listSpriteAnimations[0]->Set2DPosition(runPosition1.x + 10, runPosition1.y);
+				m_listSpriteAnimations[0]->Set2DPosition(runPosition1.x + 65, runPosition1.y);
 				distanDown = false;
 			}
 			
@@ -349,7 +381,7 @@ void GSPlay::Update(float deltaTime)
 			Vector2 positionCoin = it->Get2DPosition();
 			int px = positionHero.x - positionCoin.x;
 			int py = positionHero.y - positionCoin.y;
-			if ((px<25) && (px>-25) && (py>-8) && (py<8) && (eatCoin == true))
+			if ((px<25) && (px>-25) && (py>-10) && (py<10) && (eatCoin == true))
 			{
 				score = score + 10;
 				eatCoin = false;
@@ -486,14 +518,14 @@ void GSPlay::Jump() {
 	if (canJump) {
 		m_listActiveAnimations.pop_back();
 		Vector2 jumpPosition = m_listSpriteAnimations[0]->Get2DPosition();
-		heroJump->Set2DPosition(jumpPosition.x, jumpPosition.y - 30);
+		heroJump->Set2DPosition(jumpPosition.x, jumpPosition.y );
 		m_listActiveAnimations.push_back(heroJump);
 		stateHero = 1;
 		eatCoin = true;
 		distanJump = true;
 		timeBetwenTwoJump = 4;
 		afterJump = true;
-		
+		halfJump = true;
 	}
 	
 }
@@ -501,11 +533,11 @@ void GSPlay::Down() {
 	if (canDown) {
 		m_listActiveAnimations.pop_back();
 		Vector2 downPosition = m_listSpriteAnimations[0]->Get2DPosition();
-		heroNam->Set2DPosition(downPosition.x + 5, downPosition.y+1);
+		heroNam->Set2DPosition(downPosition.x + 10, downPosition.y+3);
 		m_listActiveAnimations.push_back(heroNam);
 		stateHero = 2;
 		eatCoin = false;
-		timeDown = 6;
+		timeDown = 8;
 		distanDown = true;
 		timeBetwenTwoDown = 3;
 		afterDown = true;
