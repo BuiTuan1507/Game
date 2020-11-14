@@ -1,3 +1,4 @@
+
 #include "GSPlay.h"
 
 #include "Shaders.h"
@@ -133,7 +134,7 @@ void GSPlay::Init()
 	//button resume
 	texture = ResourceManagers::GetInstance()->GetTexture("button_setting");
 	std::shared_ptr<GameButton> m_PauseGame1 = std::make_shared<GameButton>(model, shader, texture);
-	m_PauseGame1->Set2DPosition(300, 70);
+	m_PauseGame1->Set2DPosition(100, 70);
 	m_PauseGame1->SetSize(150, 50);
 	m_PauseGame1->setActive(false);
 	m_PauseGame1->SetOnClick([]() {
@@ -221,7 +222,7 @@ void GSPlay::Init()
 	m_score->Set2DPosition(Vector2(20, 25));
 
 	
-	//ResourceManagers::GetInstance()->PlaySound("1",true);
+	ResourceManagers::GetInstance()->PlaySound("1",true);
 }
 
 void GSPlay::Exit()
@@ -235,7 +236,7 @@ void GSPlay::Pause()
 	isPauseGame = true;
 	m_listButton[2]->setActive(false);
 	m_listButton[1]->setActive(true);
-
+	ResourceManagers::GetInstance()->m_Soloud.setPauseAll(true);
 
 }
 
@@ -244,6 +245,7 @@ void GSPlay::Resume()
 	isPauseGame = false;
 	m_listButton[2]->setActive(true);
 	m_listButton[1]->setActive(false);
+	ResourceManagers::GetInstance()->m_Soloud.setPauseAll(false);
 }
 
 
@@ -276,8 +278,12 @@ void GSPlay::HandleTouchEvents(int x, int y, bool bIsPressed)
 {
 	for (auto it : m_listButton)
 	{
-		(it)->HandleTouchEvents(x, y, bIsPressed);
-		if ((it)->IsHandle()) break;
+		if (it->getActive() && (bIsPressed == true))
+		{
+			(it)->HandleTouchEvents(x, y, bIsPressed);
+			if ((it)->IsHandle()) break;
+		}
+		
 	}
 	
 }
@@ -304,14 +310,14 @@ void GSPlay::Update(float deltaTime)
 		}
 		else
 		{
-			m_BackGround1->Set2DPosition(p_Background1.x - deltaMove + 2 * screenWidth, p_Background1.y);
+			m_BackGround1->Set2DPosition(p_Background1.x - deltaMove + 2 * screenWidth , p_Background1.y);
 		}
 		if (p_Background.x - deltaMove > -screenWidth / 2) {
 			m_BackGround->Set2DPosition(p_Background.x - deltaMove, p_Background.y);
 		}
 		else
 		{
-			m_BackGround->Set2DPosition(p_Background.x - deltaMove + 2 * screenWidth, p_Background.y);
+			m_BackGround->Set2DPosition(p_Background.x - deltaMove + 2 * screenWidth , p_Background.y);
 		}
 		
 		//Jump
@@ -429,8 +435,9 @@ void GSPlay::Update(float deltaTime)
 		// GameOver Obstacle
 		for (auto it : m_listObstacle) {
 			Vector2 poistionObstacle = it->Get2DPosition();
-			int  p = positionHero.x - poistionObstacle.x;
-			if ((p < 10) && (p > -10) && ((poistionObstacle.y - 20) == positionHero.y)) {
+			int  px = positionHero.x - poistionObstacle.x;
+			int py = positionHero.y - poistionObstacle.y +20;
+			if ((px < 10) && (px > -10) && (py<3) && (py>-1)) {
 				isGameOver = true;
 				printf("bay");
 			}
@@ -570,7 +577,7 @@ void GSPlay::Down() {
 	if (canDown) {
 		m_listActiveAnimations.pop_back();
 		Vector2 downPosition = m_listSpriteAnimations[0]->Get2DPosition();
-		heroNam->Set2DPosition(downPosition.x, downPosition.y+3);
+		heroNam->Set2DPosition(downPosition.x, downPosition.y+2);
 		m_listActiveAnimations.push_back(heroNam);
 		stateHero = 2;
 		eatCoin = false;

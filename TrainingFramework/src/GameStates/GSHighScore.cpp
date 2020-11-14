@@ -1,11 +1,24 @@
 #include "GSHighScore.h"
-
+#include <fstream>
+#include <iostream>
+using namespace std;
 extern int screenWidth; //need get on Graphic engine
 extern int screenHeight; //need get on Graphic engine
 extern bool isGameOver;
+
+
+int highScore;
+int highScore1;
+int highScore2;
 GSHighScore::GSHighScore()
 {
 	isGameOver = false;
+	ifstream file("score.txt");
+	if (file.is_open())
+	{
+		file >> highScore >> highScore1 >> highScore2;
+	}
+	file.close();
 }
 
 
@@ -43,29 +56,52 @@ void GSHighScore::Init()
 	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
 	std::shared_ptr<Font> font = ResourceManagers::GetInstance()->GetFont("arialbd");
 	std::shared_ptr<Text> m_Text_gameName1 = std::make_shared< Text>(shader, font, "HIGH SCORE", TEXT_COLOR::RED, 1.0);
-	m_Text_gameName1->Set2DPosition(Vector2(screenWidth / 2 - 80, 50));
+	m_Text_gameName1->Set2DPosition(Vector2(screenWidth / 2 -80, 50));
 	m_Text_gameName.push_back(m_Text_gameName1);
 
 	//text game title highscore 1
 	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
 	font = ResourceManagers::GetInstance()->GetFont("arialbd");
-	m_Text_gameName1 = std::make_shared< Text>(shader, font, "100", TEXT_COLOR::RED, 1.0);
-	m_Text_gameName1->Set2DPosition(Vector2(screenWidth / 2 - 80, 130));
+	m_Text_gameName1 = std::make_shared< Text>(shader, font, "1.", TEXT_COLOR::RED, 1.0);
+	m_Text_gameName1->Set2DPosition(Vector2(screenWidth / 2 - 120, 130));
+	m_Text_gameName.push_back(m_Text_gameName1);
+
+	//text game title highscore 1
+	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
+	font = ResourceManagers::GetInstance()->GetFont("arialbd");
+	m_Text_gameName1 = std::make_shared< Text>(shader, font, std::to_string(highScore), TEXT_COLOR::RED, 1.0);
+	m_Text_gameName1->Set2DPosition(Vector2(screenWidth / 2, 130));
+	m_Text_gameName.push_back(m_Text_gameName1);
+
+	//text game title highscore 1
+	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
+	font = ResourceManagers::GetInstance()->GetFont("arialbd");
+	m_Text_gameName1 = std::make_shared< Text>(shader, font, "2.", TEXT_COLOR::RED, 1.0);
+	m_Text_gameName1->Set2DPosition(Vector2(screenWidth / 2 - 120 , 180));
 	m_Text_gameName.push_back(m_Text_gameName1);
 
 	//text game title
 	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
 	font = ResourceManagers::GetInstance()->GetFont("arialbd");
-	m_Text_gameName1 = std::make_shared< Text>(shader, font, "40", TEXT_COLOR::RED, 1.0);
-	m_Text_gameName1->Set2DPosition(Vector2(screenWidth / 2 - 80, 180));
+	m_Text_gameName1 = std::make_shared< Text>(shader, font, std::to_string(highScore1), TEXT_COLOR::RED, 1.0);
+	m_Text_gameName1->Set2DPosition(Vector2(screenWidth / 2 , 180));
+	m_Text_gameName.push_back(m_Text_gameName1);
+
+	//text game title highscore 1
+	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
+	font = ResourceManagers::GetInstance()->GetFont("arialbd");
+	m_Text_gameName1 = std::make_shared< Text>(shader, font, "3.", TEXT_COLOR::RED, 1.0);
+	m_Text_gameName1->Set2DPosition(Vector2(screenWidth / 2 - 120, 230));
 	m_Text_gameName.push_back(m_Text_gameName1);
 
 	//text game title
 	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
 	font = ResourceManagers::GetInstance()->GetFont("arialbd");
-	m_Text_gameName1 = std::make_shared< Text>(shader, font, "10", TEXT_COLOR::RED, 1.0);
-	m_Text_gameName1->Set2DPosition(Vector2(screenWidth / 2 - 80, 230));
+	m_Text_gameName1 = std::make_shared< Text>(shader, font, std::to_string(highScore2), TEXT_COLOR::RED, 1.0);
+	m_Text_gameName1->Set2DPosition(Vector2(screenWidth / 2 , 230));
 	m_Text_gameName.push_back(m_Text_gameName1);
+
+	
 }
 
 void GSHighScore::Exit()

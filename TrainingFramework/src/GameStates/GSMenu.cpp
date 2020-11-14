@@ -27,10 +27,10 @@ void GSMenu::Init()
 	m_BackGround->SetSize(screenWidth, screenHeight);
 
 	//play button
-	texture = ResourceManagers::GetInstance()->GetTexture("button_play");
+	texture = ResourceManagers::GetInstance()->GetTexture("b_play");
 	std::shared_ptr<GameButton> button = std::make_shared<GameButton>(model, shader, texture);
 	button->Set2DPosition(screenWidth / 2, 150);
-	button->SetSize(150, 50);
+	button->SetSize(150, 83);
 	button->SetOnClick([]() {
 		GameStateMachine::GetInstance()->ChangeState(StateTypes::STATE_Play);
 	});

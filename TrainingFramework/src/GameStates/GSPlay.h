@@ -4,6 +4,7 @@
 #include "Obstacle.h"
 #include "Coin.h"
 
+
 class Sprite2D;
 class Sprite3D;
 class Text;

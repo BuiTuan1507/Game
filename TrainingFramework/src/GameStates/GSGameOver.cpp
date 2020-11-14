@@ -1,11 +1,50 @@
 #include "GSGameOver.h"
-
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+using std::ofstream;
 extern int screenWidth; //need get on Graphic engine
 extern int screenHeight; //need get on Graphic engine
 extern int score;
+int highScore[3] = {0,0,0};
+int cc;
 GSGameOver::GSGameOver()
 {
+	int  i = 0;
+	int h;
+	ifstream file ("score.txt");
+	ofstream file1("score.txt");
+	//file.open("score.txt",ios::in);
+	if(file.is_open())
+	{
+		file >> highScore[0] >> highScore[1] >> highScore[2];
+		if (score > highScore[0])
+		{
+			highScore[0] = score;
+			highScore[1] = highScore[0];
+			highScore[2] = highScore[1];
+		}
+		if ((score > highScore[1]) && (score < highScore[0]))
+		{
+			highScore[1] = score;
+			highScore[2] = highScore[1];
+		}
+		if ((score > highScore[2]) && (score < highScore[1]))
+		{
+			
+			highScore[2] = score;
+		}
 
+		
+		
+	}
+	
+	
+	//file write
+	file1 << highScore[0] << " " << highScore[1] << " "<< highScore[2] << endl;
+	file.close();
+	file1.close();
 }
 
 

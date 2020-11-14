@@ -3,7 +3,7 @@
 #include "Application.h"
 #include "utilities.h" 
 
-GLint screenWidth = 800;
+GLint screenWidth = 798;
 GLint screenHeight = 480;
 
 
