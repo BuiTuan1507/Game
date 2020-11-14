@@ -12,7 +12,7 @@
 #include "Obstacle.h"
 #include "Coin.h"
 #include "GSGameOver.h"
-
+#include <ctime>
 extern int screenWidth; //need get on Graphic engine
 extern int screenHeight; //need get on Graphic engine
 int score;
@@ -40,6 +40,7 @@ int downX;
 bool halfJump; // 1/2 parabol nhay
 int giatoc;
 int giatoc1;
+bool check;
 GSPlay::GSPlay()
 {
 	isGameOver = false;
@@ -51,12 +52,12 @@ GSPlay::GSPlay()
 	distanJump = false;
 	distanDown = false;
 	stateHero = 0;
-	timeJump = 10;
+	timeJump = 30;
 	deltaMove = 0;
 	deltaJump = 0;
-	timeBetwenTwoJump = 4;// thoi gian co the giua hai lan nhay
-	timeDown = 6;
-	timeBetwenTwoDown = 3;
+	timeBetwenTwoJump = 0;// thoi gian co the giua hai lan nhay
+	timeDown = 20;
+	timeBetwenTwoDown = 0;
 	afterJump = false;
 	afterDown = false;
 	jumpX = 0;
@@ -65,6 +66,7 @@ GSPlay::GSPlay()
 	halfJump = true;
 	giatoc = 1;
 	giatoc1 = 1;
+	check = false;
 }
 
 
@@ -94,9 +96,11 @@ void GSPlay::Init()
 	m_BackGround1->SetSize(screenWidth, screenHeight);
 	//Obstaccle
 	
-	for (auto i = 0; i < 100; i++)
+	srand((unsigned)time(0));
+
+	for (auto i = 0; i < 50; i++)
 	{
-		switch (i%3)
+		switch (rand() %3)
 		{
 		case 0:
 			m_Obstacle = std::make_shared<Sprite2D>(model, shader, ob1);
@@ -112,7 +116,7 @@ void GSPlay::Init()
 		}
 		
 		m_Obstacle->SetSize(25, 26);
-		m_Obstacle->Set2DPosition(350 * (i + 1), 380);
+		m_Obstacle->Set2DPosition(500 * (i + 1), 380);
 		m_listObstacle.push_back(m_Obstacle);
 	}
 	//button back
@@ -125,24 +129,48 @@ void GSPlay::Init()
 	});
 	m_listButton.push_back(button);
 
+
+	//button resume
+	texture = ResourceManagers::GetInstance()->GetTexture("button_setting");
+	std::shared_ptr<GameButton> m_PauseGame1 = std::make_shared<GameButton>(model, shader, texture);
+	m_PauseGame1->Set2DPosition(300, 70);
+	m_PauseGame1->SetSize(150, 50);
+	m_PauseGame1->setActive(false);
+	m_PauseGame1->SetOnClick([]() {
+		GameStateMachine::GetInstance()->CurrentState()->Resume();
+	});
+	m_listButton.push_back(m_PauseGame1);
 	//button pause
 	texture = ResourceManagers::GetInstance()->GetTexture("button_resume");
 	m_PauseGame = std::make_shared<GameButton>(model, shader, texture);
 	m_PauseGame->Set2DPosition(100, 70);
 	m_PauseGame->SetSize(150, 50);
 	m_PauseGame->SetOnClick([]() {
-		
+		GameStateMachine::GetInstance()->CurrentState()->Pause();
 	});
-
-
-
+	m_listButton.push_back(m_PauseGame);
+	 //button resume
+	//xu li ban phim chi nhan 1 lan bang bIsKeyPressed
+	// ham pause de bien pause, set active trong ham pause trong  mlistbutton setActice(true or false), 1 la pause  != pause, 2 a setActice buttonreum, 3 la setActice button p
+	//floatVoluem am luong
+	//pause sound su dung pauseAll setPauseAll
+	//ResoureManannge.. getinstan ..m_soloud->setPauseAll(true);
+	//SoureLoud luc release phai chay lai file soloud o che do release
 	//coin
+
 	for (int i = 0; i < 50; i++) 
 	{
 		shader = ResourceManagers::GetInstance()->GetShader("Animation");
 		texture = ResourceManagers::GetInstance()->GetTexture("coin1");
 		std::shared_ptr<Coin> obj = std::make_shared<Coin>(model, shader, texture, 6, 0.1f);
-		obj->Set2DPosition(200*(i+1), 330);
+		int dCoin = 300 * (i + 1);
+		if (dCoin % 1500 == 0) {
+			dCoin = dCoin + 100;
+		}
+		if ((dCoin - 300) % 1500 == 0) {
+			dCoin = dCoin + 100;
+		}
+		obj->Set2DPosition(dCoin, 330);
 		obj->SetSize(25, 25);
 		m_listCoin1.push_back(obj);
 	}
@@ -159,7 +187,7 @@ void GSPlay::Init()
 		shader = ResourceManagers::GetInstance()->GetShader("Animation");
 		texture = ResourceManagers::GetInstance()->GetTexture("bird");
 		m_Bird = std::make_shared<SpriteAnimation>(model, shader, texture, 8, 0.08f);
-		m_Bird->Set2DPosition(600 * (i+1), 340);
+		m_Bird->Set2DPosition(500 * (i+1)+300, 340);
 		m_Bird->SetSize(60, 40);
 		m_listBird.push_back(m_Bird);
 	}
@@ -168,7 +196,7 @@ void GSPlay::Init()
 	shader = ResourceManagers::GetInstance()->GetShader("Animation");
 	texture = ResourceManagers::GetInstance()->GetTexture("runrun");
 	std::shared_ptr<SpriteAnimation> obj = std::make_shared<SpriteAnimation>(model, shader, texture, 8, 0.08f);
-	obj->Set2DPosition(50, 360);
+	obj->Set2DPosition(100, 360);
 	obj->SetSize(60, 60);
 	m_listSpriteAnimations.push_back(obj);
 	m_listActiveAnimations.push_back(obj);
@@ -193,7 +221,7 @@ void GSPlay::Init()
 	m_score->Set2DPosition(Vector2(20, 25));
 
 	
-	ResourceManagers::GetInstance()->PlaySound("1");
+	//ResourceManagers::GetInstance()->PlaySound("1",true);
 }
 
 void GSPlay::Exit()
@@ -204,12 +232,18 @@ void GSPlay::Exit()
 
 void GSPlay::Pause()
 {
+	isPauseGame = true;
+	m_listButton[2]->setActive(false);
+	m_listButton[1]->setActive(true);
+
 
 }
 
 void GSPlay::Resume()
 {
-
+	isPauseGame = false;
+	m_listButton[2]->setActive(true);
+	m_listButton[1]->setActive(false);
 }
 
 
@@ -245,25 +279,17 @@ void GSPlay::HandleTouchEvents(int x, int y, bool bIsPressed)
 		(it)->HandleTouchEvents(x, y, bIsPressed);
 		if ((it)->IsHandle()) break;
 	}
-	if (m_PauseGame->IsClick(bIsPressed))
-	{
-		isPauseGame = true;
-	}
-	else
-	{
-		isPauseGame = false;
-	}
 	
 }
 
 void GSPlay::Update(float deltaTime)
 {
-	deltaMove = 50 * deltaTime;
+	deltaMove = 100 * deltaTime;
 	if ((score > 100)&&(score<150)) {
-		deltaMove = 80 * deltaTime;
+		deltaMove = 150 * deltaTime;
 	}
 	if (score > 200) {
-		deltaMove = 100 * deltaTime;
+		deltaMove = 200 * deltaTime;
 	}
 	if (isPauseGame == false){
 		deltaJump = deltaTime;
@@ -287,29 +313,32 @@ void GSPlay::Update(float deltaTime)
 		{
 			m_BackGround->Set2DPosition(p_Background.x - deltaMove + 2 * screenWidth, p_Background.y);
 		}
-
 		
 		//Jump
 		if ((stateHero == 1) && (timeJump > 0))
 		{
 			timeJump = timeJump - deltaTime;
 			Vector2 jumpP = m_listActiveAnimations[0]->Get2DPosition();
-			giatoc += 0.5f;
-			if ((jumpY <= 40) && (jumpX <=20) && (halfJump == true)) {
-				m_listActiveAnimations[0]->Set2DPosition(jumpP.x + 4, jumpP.y - 8);
-				jumpX += 2 * giatoc;
-				jumpY += 8 * giatoc;
+			if ((jumpY <= 60) && (jumpX <=20) && (halfJump == true)) {
+				m_listActiveAnimations[0]->Set2DPosition(jumpP.x+2 , jumpP.y - 7);
+				
+				jumpY += 7;
 			}
-			else if ((jumpY >= 40) || (jumpX >= 20) && (halfJump == true))
+			else if ((jumpY >= 60) || (jumpX >= 20) && (halfJump == true))
 			{
-				m_listActiveAnimations[0]->Set2DPosition(jumpP.x + 5, jumpP.y);
+				m_listActiveAnimations[0]->Set2DPosition(jumpP.x, jumpP.y);
 				halfJump = false;
 			}
 			if (halfJump == false)
 			{
 				if (jumpP.y <= 360)
 				{
-					m_listActiveAnimations[0]->Set2DPosition(jumpP.x + 3, jumpP.y + 8);
+					m_listActiveAnimations[0]->Set2DPosition(jumpP.x-2, jumpP.y + 7);
+
+				}
+				if (jumpP.y > 360) {
+					m_listActiveAnimations[0]->Set2DPosition(100, 360);
+					timeJump = 0;
 				}
 			}
 			
@@ -320,14 +349,14 @@ void GSPlay::Update(float deltaTime)
 			Vector2 runPosition = m_listSpriteAnimations[0]->Get2DPosition();
 			if (distanJump == true)
 			{
-				m_listSpriteAnimations[0]->Set2DPosition(runPosition.x + 30, runPosition.y);
+				m_listSpriteAnimations[0]->Set2DPosition(runPosition.x, runPosition.y);
 				distanJump = false;
 			}
 			
 			m_listActiveAnimations.pop_back();
 			m_listActiveAnimations.push_back(m_listSpriteAnimations[0]);
 			stateHero = 0;
-			timeJump = 8;
+			timeJump = 30;
 			jumpX = 0;
 			jumpY = 0;
 		}
@@ -346,21 +375,21 @@ void GSPlay::Update(float deltaTime)
 		if ((stateHero == 2) && (timeDown > 0)) {
 			timeDown = timeDown - deltaTime;
 			Vector2 downP = m_listActiveAnimations[0]->Get2DPosition();
-			m_listActiveAnimations[0]->Set2DPosition(downP.x + 6, downP.y);
+			m_listActiveAnimations[0]->Set2DPosition(downP.x , downP.y);
 			
 		}
 		else if ((stateHero == 2) && (timeDown <= 0))
 		{
 			Vector2 runPosition1 = m_listSpriteAnimations[0]->Get2DPosition();
 			if (distanDown == true) {
-				m_listSpriteAnimations[0]->Set2DPosition(runPosition1.x + 65, runPosition1.y);
+				m_listSpriteAnimations[0]->Set2DPosition(runPosition1.x , runPosition1.y);
 				distanDown = false;
 			}
 			
 			m_listActiveAnimations.pop_back();
 			m_listActiveAnimations.push_back(m_listSpriteAnimations[0]);
 			stateHero = 0;
-			timeDown = 6;
+			timeDown = 20;
 		
 		}
 		if ((timeBetwenTwoDown > 0) && (afterDown == true))  {
@@ -424,7 +453,11 @@ void GSPlay::Update(float deltaTime)
 
 		for (auto it1 : m_listButton)
 		{
-			it1->Update(deltaTime);
+			if(it1->getActive())
+			{
+				it1->Update(deltaTime);
+			}
+			
 		}
 
 		for (auto it : m_listActiveAnimations) {
@@ -481,7 +514,11 @@ void GSPlay::Draw()
 
 	for (auto it1 : m_listButton)
 	{
-		it1->Draw();
+		
+		if (it1->getActive())
+		{
+			it1->Draw();
+		}
 	}
 	
 	for (auto it : m_listSpriteAnimations1) {
@@ -505,7 +542,7 @@ void GSPlay::Draw()
 		}
 		
 	}
-	m_PauseGame->Draw();
+	
 }
 
 void GSPlay::SetNewPostionForBullet()
@@ -523,7 +560,7 @@ void GSPlay::Jump() {
 		stateHero = 1;
 		eatCoin = true;
 		distanJump = true;
-		timeBetwenTwoJump = 4;
+		timeBetwenTwoJump = 5;
 		afterJump = true;
 		halfJump = true;
 	}
@@ -533,13 +570,12 @@ void GSPlay::Down() {
 	if (canDown) {
 		m_listActiveAnimations.pop_back();
 		Vector2 downPosition = m_listSpriteAnimations[0]->Get2DPosition();
-		heroNam->Set2DPosition(downPosition.x + 10, downPosition.y+3);
+		heroNam->Set2DPosition(downPosition.x, downPosition.y+3);
 		m_listActiveAnimations.push_back(heroNam);
 		stateHero = 2;
 		eatCoin = false;
-		timeDown = 8;
 		distanDown = true;
-		timeBetwenTwoDown = 3;
+		timeBetwenTwoDown = 5;
 		afterDown = true;
 	}
 }

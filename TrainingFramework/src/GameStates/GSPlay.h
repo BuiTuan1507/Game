@@ -47,7 +47,7 @@ private:
 	std::shared_ptr<SpriteAnimation> m_Bird;
 	std::shared_ptr<Text>  m_score;
 	std::shared_ptr<GameButton> m_PauseGame;
-	std::list<std::shared_ptr<GameButton>>	m_listButton;
+	std::vector<std::shared_ptr<GameButton>>	m_listButton;
 
 	std::vector<std::shared_ptr<SpriteAnimation>> m_listBird;
 	std::vector<std::shared_ptr<Sprite2D>> m_listObstacle;

@@ -24,7 +24,7 @@ ResourceManagers::ResourceManagers()
 }
 ResourceManagers::~ResourceManagers()
 {
-
+	m_Soloud.deinit();
 }
 
 void ResourceManagers::AddSound(const std::string& name) {

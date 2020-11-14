@@ -7,6 +7,7 @@ GameButton::GameButton(std::shared_ptr<Models> model, std::shared_ptr<Shaders> s
 	m_pBtClick = nullptr;
 	m_isHandle = false;
 	m_click = false;
+	m_Active = true;
 }
 
 GameButton::~GameButton()
@@ -42,4 +43,14 @@ bool GameButton::IsClick(bool bIsPressed)
 		m_click = false;
 	}
 	return m_click;
+}
+
+void GameButton::setActive(bool isActive)
+{
+	m_Active = isActive;
+}
+
+bool GameButton::getActive()
+{
+	return m_Active;
 }
