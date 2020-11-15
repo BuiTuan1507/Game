@@ -13,9 +13,11 @@
 #include "Obstacle.h"
 #include "Coin.h"
 #include "GSGameOver.h"
+
 #include <ctime>
 extern int screenWidth; //need get on Graphic engine
 extern int screenHeight; //need get on Graphic engine
+extern bool isMusic;
 int score;
 bool keyUP = false;
 bool eatCoin = false;
@@ -121,10 +123,10 @@ void GSPlay::Init()
 		m_listObstacle.push_back(m_Obstacle);
 	}
 	//button back
-	texture = ResourceManagers::GetInstance()->GetTexture("button_back");
+	texture = ResourceManagers::GetInstance()->GetTexture("back");
 	std::shared_ptr<GameButton> button = std::make_shared<GameButton>(model, shader, texture);
 	button->Set2DPosition(700, 70);
-	button->SetSize(150, 50);
+	button->SetSize(70, 70);
 	button->SetOnClick([]() {
 		GameStateMachine::GetInstance()->PopState();
 	});
@@ -132,20 +134,20 @@ void GSPlay::Init()
 
 
 	//button resume
-	texture = ResourceManagers::GetInstance()->GetTexture("button_setting");
+	texture = ResourceManagers::GetInstance()->GetTexture("resume");
 	std::shared_ptr<GameButton> m_PauseGame1 = std::make_shared<GameButton>(model, shader, texture);
 	m_PauseGame1->Set2DPosition(100, 70);
-	m_PauseGame1->SetSize(150, 50);
+	m_PauseGame1->SetSize(70, 70);
 	m_PauseGame1->setActive(false);
 	m_PauseGame1->SetOnClick([]() {
 		GameStateMachine::GetInstance()->CurrentState()->Resume();
 	});
 	m_listButton.push_back(m_PauseGame1);
 	//button pause
-	texture = ResourceManagers::GetInstance()->GetTexture("button_resume");
+	texture = ResourceManagers::GetInstance()->GetTexture("pause");
 	m_PauseGame = std::make_shared<GameButton>(model, shader, texture);
 	m_PauseGame->Set2DPosition(100, 70);
-	m_PauseGame->SetSize(150, 50);
+	m_PauseGame->SetSize(70, 70);
 	m_PauseGame->SetOnClick([]() {
 		GameStateMachine::GetInstance()->CurrentState()->Pause();
 	});
@@ -221,8 +223,11 @@ void GSPlay::Init()
 	m_score = std::make_shared< Text>(shader, font, std::to_string(score), TEXT_COLOR::RED, 1.0);
 	m_score->Set2DPosition(Vector2(20, 25));
 
+	if(isMusic)
+	{
+		ResourceManagers::GetInstance()->PlaySound("1", true);
+	}
 	
-	ResourceManagers::GetInstance()->PlaySound("1",true);
 }
 
 void GSPlay::Exit()
@@ -236,7 +241,11 @@ void GSPlay::Pause()
 	isPauseGame = true;
 	m_listButton[2]->setActive(false);
 	m_listButton[1]->setActive(true);
-	ResourceManagers::GetInstance()->m_Soloud.setPauseAll(true);
+	if(isMusic)
+	{
+		ResourceManagers::GetInstance()->m_Soloud.setPauseAll(true);
+	}
+	
 
 }
 
@@ -245,7 +254,11 @@ void GSPlay::Resume()
 	isPauseGame = false;
 	m_listButton[2]->setActive(true);
 	m_listButton[1]->setActive(false);
-	ResourceManagers::GetInstance()->m_Soloud.setPauseAll(false);
+	if (isMusic)
+	{
+		ResourceManagers::GetInstance()->m_Soloud.setPauseAll(false);
+	}
+	
 }
 
 

@@ -66,10 +66,10 @@ void  GSGameOver::Init()
 	m_BackGround->SetSize(screenWidth, screenHeight);
 
 	//play button
-	texture = ResourceManagers::GetInstance()->GetTexture("button_back");
+	texture = ResourceManagers::GetInstance()->GetTexture("back");
 	std::shared_ptr<GameButton> button = std::make_shared<GameButton>(model, shader, texture);
 	button->Set2DPosition(700, 50);
-	button->SetSize(200, 50);
+	button->SetSize(70, 70);
 	button->SetOnClick([]() {
 		GameStateMachine::GetInstance()->PopState();
 	});
