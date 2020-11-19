@@ -18,6 +18,7 @@
 extern int screenWidth; //need get on Graphic engine
 extern int screenHeight; //need get on Graphic engine
 extern bool isMusic;
+bool start; 
 int score;
 bool keyUP = false;
 bool eatCoin = false;
@@ -46,6 +47,7 @@ int giatoc1;
 bool check;
 GSPlay::GSPlay()
 {
+	start = true;
 	isGameOver = false;
 	isPauseGame = false;
 	score = 0;
@@ -84,8 +86,11 @@ void GSPlay::Init()
 	auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D");
 	auto texture = ResourceManagers::GetInstance()->GetTexture("123");
 	auto ob1 = ResourceManagers::GetInstance()->GetTexture("lua");
-	auto ob2 = ResourceManagers::GetInstance()->GetTexture("bbc1");
+	auto ob2 = ResourceManagers::GetInstance()->GetTexture("bb");
 	auto ob3 = ResourceManagers::GetInstance()->GetTexture("rock");
+	auto bird1 = ResourceManagers::GetInstance()->GetTexture("bird");
+	auto bird2 = ResourceManagers::GetInstance()->GetTexture("bird1");
+	auto bird3 = ResourceManagers::GetInstance()->GetTexture("bird2");
 	auto coin = ResourceManagers::GetInstance()->GetTexture("coin_Game");
 	//BackGround
 	auto shader = ResourceManagers::GetInstance()->GetShader("TextureShader");
@@ -188,8 +193,21 @@ void GSPlay::Init()
 	for (int i = 0; i < 50; i++)
 	{
 		shader = ResourceManagers::GetInstance()->GetShader("Animation");
-		texture = ResourceManagers::GetInstance()->GetTexture("bird");
-		m_Bird = std::make_shared<SpriteAnimation>(model, shader, texture, 8, 0.08f);
+		switch (rand() % 3)
+		{
+		case 0:
+			m_Bird = std::make_shared<SpriteAnimation>(model, shader, bird1, 8, 0.08f);
+			break;
+		case 1:
+			m_Bird = std::make_shared<SpriteAnimation>(model, shader, bird2, 9, 0.08f);
+			break;
+		case 2:
+			m_Bird = std::make_shared<SpriteAnimation>(model, shader, bird3, 9, 0.08f);
+			break;
+		default:
+			break;
+		}
+	
 		m_Bird->Set2DPosition(500 * (i+1)+300, 340);
 		m_Bird->SetSize(60, 40);
 		m_listBird.push_back(m_Bird);
@@ -221,7 +239,7 @@ void GSPlay::Init()
 	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
 	std::shared_ptr<Font> font = ResourceManagers::GetInstance()->GetFont("arialbd");
 	m_score = std::make_shared< Text>(shader, font, std::to_string(score), TEXT_COLOR::RED, 1.0);
-	m_score->Set2DPosition(Vector2(20, 25));
+	m_score->Set2DPosition(Vector2(300, 25));
 
 	if(isMusic)
 	{
@@ -304,12 +322,17 @@ void GSPlay::HandleTouchEvents(int x, int y, bool bIsPressed)
 void GSPlay::Update(float deltaTime)
 {
 	deltaMove = 100 * deltaTime;
-	if ((score > 100)&&(score<150)) {
+	if ((score > 100)&&(score<=150)) {
+		deltaMove = 125 * deltaTime;
+	}
+	if ((score > 150) && (score <= 200)) {
 		deltaMove = 150 * deltaTime;
 	}
-	if (score > 200) {
+	if (score > 200)
+	{
 		deltaMove = 200 * deltaTime;
 	}
+	
 	if (isPauseGame == false){
 		deltaJump = deltaTime;
 		m_BackGround->Update(deltaTime);
@@ -467,6 +490,7 @@ void GSPlay::Update(float deltaTime)
 		}
 		//setState GameOver
 		if (isGameOver) {
+			ResourceManagers::GetInstance()->m_Soloud.stopAll();
 			GameStateMachine::GetInstance()->PopState();
 			GameStateMachine::GetInstance()->ChangeState(StateTypes::STATE_GameOver);
 		}

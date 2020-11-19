@@ -98,8 +98,8 @@ void GSMenu::Init()
 	//text game title
 	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
 	std::shared_ptr<Font> font = ResourceManagers::GetInstance()->GetFont("arialbd");
-	m_Text_gameName = std::make_shared< Text>(shader, font, "RUNNING MAN", TEXT_COLOR::GREEN, 1.0);
-	m_Text_gameName->Set2DPosition(Vector2(screenWidth / 2 - 80, 40));
+	m_Text_gameName = std::make_shared< Text>(shader, font, "RUNNING MAN", TEXT_COLOR::GREEN, 2.0);
+	m_Text_gameName->Set2DPosition(Vector2(screenWidth / 2 - 180, 40));
 
 }
 

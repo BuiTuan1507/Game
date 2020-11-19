@@ -62,6 +62,7 @@ void ResourceManagers::PauseSound(const std::string& name) {
 		wave = it->second;
 	}
 	m_Soloud.stopAudioSource(*wave);
+	
 }
 
 void ResourceManagers::AddShader(const std::string& name)

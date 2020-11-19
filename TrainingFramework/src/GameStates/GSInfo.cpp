@@ -1,4 +1,4 @@
-#include "GSInfo.h"
+﻿#include "GSInfo.h"
 
 extern int screenWidth; //need get on Graphic engine
 extern int screenHeight; //need get on Graphic engine
@@ -42,29 +42,29 @@ void GSInfo::Init()
 
 	//text game title score
 	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
-	std::shared_ptr<Font> font = ResourceManagers::GetInstance()->GetFont("arialbd");
-	std::shared_ptr<Text> m_Text_gameName1 = std::make_shared< Text>(shader, font, "THONG TIN", TEXT_COLOR::RED, 1.0);
+	std::shared_ptr<Font> font = ResourceManagers::GetInstance()->GetFont("Adriana");
+	std::shared_ptr<Text> m_Text_gameName1 = std::make_shared< Text>(shader, font, "THONG TIN", TEXT_COLOR::RED, 2.5);
 	m_Text_gameName1->Set2DPosition(Vector2(screenWidth / 2 - 80, 50));
 	m_Text_gameName.push_back(m_Text_gameName1);
 
 	//text game title highscore 1
 	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
-	font = ResourceManagers::GetInstance()->GetFont("arialbd");
-	m_Text_gameName1 = std::make_shared< Text>(shader, font, "Tac gia : Bui Minh Tuan", TEXT_COLOR::RED, 1.0);
+	font = ResourceManagers::GetInstance()->GetFont("Adriana");
+	m_Text_gameName1 = std::make_shared< Text>(shader, font, "Tac gia : Bui Minh Tuan", TEXT_COLOR::RED, 1.5);
 	m_Text_gameName1->Set2DPosition(Vector2(screenWidth / 2 - 220, 130));
 	m_Text_gameName.push_back(m_Text_gameName1);
 
 	//text game title highscore 1
 	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
-	font = ResourceManagers::GetInstance()->GetFont("arialbd");
-	m_Text_gameName1 = std::make_shared< Text>(shader, font, "Xin danh loi cam on toi anh Hoang,", TEXT_COLOR::RED, 1.0);
+	font = ResourceManagers::GetInstance()->GetFont("Adriana");
+	m_Text_gameName1 = std::make_shared< Text>(shader, font, "Cam on anh Hoang, anh Hung", TEXT_COLOR::RED, 1.2);
 	m_Text_gameName1->Set2DPosition(Vector2(screenWidth / 2 - 250, 230));
 	m_Text_gameName.push_back(m_Text_gameName1);
 
 	//text game title highscore 1
 	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
-	font = ResourceManagers::GetInstance()->GetFont("arialbd");
-	m_Text_gameName1 = std::make_shared< Text>(shader, font, "cung cac ban thuc tap da giup em hoan thanh game nay", TEXT_COLOR::RED, 1.0);
+	font = ResourceManagers::GetInstance()->GetFont("Adriana");
+	m_Text_gameName1 = std::make_shared< Text>(shader, font, "Cung cac ban thuc tap da giup em hoan thanh game nay", TEXT_COLOR::RED, 1.2);
 	m_Text_gameName1->Set2DPosition(Vector2(screenWidth / 2 - 330, 260));
 	m_Text_gameName.push_back(m_Text_gameName1);
 }
