@@ -209,7 +209,7 @@ void GSPlay::Init()
 		}
 	
 		m_Bird->Set2DPosition(500 * (i+1)+300, 340);
-		m_Bird->SetSize(60, 40);
+		m_Bird->SetSize(55, 40);
 		m_listBird.push_back(m_Bird);
 	}
 	
@@ -431,7 +431,7 @@ void GSPlay::Update(float deltaTime)
 			m_listActiveAnimations.pop_back();
 			m_listActiveAnimations.push_back(m_listSpriteAnimations[0]);
 			stateHero = 0;
-			timeDown = 20;
+			timeDown = 25;
 		
 		}
 		if ((timeBetwenTwoDown > 0) && (afterDown == true))  {
@@ -456,7 +456,6 @@ void GSPlay::Update(float deltaTime)
 			{
 				score = score + 10;
 				eatCoin = false;
-				//m_listSpriteAnimations1.pop_back();
 
 				int activeCoin = it->getActive();
 				if (activeCoin == 1) {
@@ -464,7 +463,7 @@ void GSPlay::Update(float deltaTime)
 				}
 				it->setActive(activeCoin);
 
-				printf("a");
+			//	printf("a");
 
 			}
 		}
@@ -475,7 +474,7 @@ void GSPlay::Update(float deltaTime)
 			int py = positionHero.y - poistionObstacle.y +20;
 			if ((px < 10) && (px > -10) && (py<3) && (py>-1)) {
 				isGameOver = true;
-				printf("bay");
+			//	printf("bay");
 			}
 		}
 		//GameOver Bird
@@ -485,7 +484,7 @@ void GSPlay::Update(float deltaTime)
 			int py = positionHero.y - positionBird.y ;
 			if ((px < 10) && (px > -10) && (py<=20)&&(py>-20)) {
 				isGameOver = true;
-				printf("bird");
+			//	printf("bird");
 			}
 		}
 		//setState GameOver

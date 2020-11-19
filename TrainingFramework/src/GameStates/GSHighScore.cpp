@@ -8,15 +8,15 @@ extern bool isGameOver;
 
 
 int highScore;
-int highScore1;
-int highScore2;
+//int highScore1;
+//int highScore2;
 GSHighScore::GSHighScore()
 {
 	isGameOver = false;
 	ifstream file("score.txt");
 	if (file.is_open())
 	{
-		file >> highScore >> highScore1 >> highScore2;
+		file >> highScore;
 	}
 	file.close();
 }
@@ -40,10 +40,10 @@ void GSHighScore::Init()
 	m_BackGround->SetSize(screenWidth, screenHeight);
 
 	//play button
-	texture = ResourceManagers::GetInstance()->GetTexture("button_back");
+	texture = ResourceManagers::GetInstance()->GetTexture("back");
 	std::shared_ptr<GameButton> button = std::make_shared<GameButton>(model, shader, texture);
 	button->Set2DPosition(700, 50);
-	button->SetSize(200, 50);
+	button->SetSize(70, 70);
 	button->SetOnClick([]() {
 		GameStateMachine::GetInstance()->PopState();
 	});
@@ -54,51 +54,23 @@ void GSHighScore::Init()
 
 	//text game title score
 	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
-	std::shared_ptr<Font> font = ResourceManagers::GetInstance()->GetFont("arialbd");
-	std::shared_ptr<Text> m_Text_gameName1 = std::make_shared< Text>(shader, font, "HIGH SCORE", TEXT_COLOR::RED, 1.0);
+	std::shared_ptr<Font> font = ResourceManagers::GetInstance()->GetFont("Adriana");
+	std::shared_ptr<Text> m_Text_gameName1 = std::make_shared< Text>(shader, font, "HIGH SCORE", TEXT_COLOR::RED, 3.0);
 	m_Text_gameName1->Set2DPosition(Vector2(screenWidth / 2 -80, 50));
 	m_Text_gameName.push_back(m_Text_gameName1);
 
 	//text game title highscore 1
 	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
-	font = ResourceManagers::GetInstance()->GetFont("arialbd");
-	m_Text_gameName1 = std::make_shared< Text>(shader, font, "1.", TEXT_COLOR::RED, 1.0);
-	m_Text_gameName1->Set2DPosition(Vector2(screenWidth / 2 - 120, 130));
+	font = ResourceManagers::GetInstance()->GetFont("Adriana");
+	m_Text_gameName1 = std::make_shared< Text>(shader, font, "Diem cao nhat : ", TEXT_COLOR::RED, 2.0);
+	m_Text_gameName1->Set2DPosition(Vector2(screenWidth / 2 - 135, 130));
 	m_Text_gameName.push_back(m_Text_gameName1);
 
 	//text game title highscore 1
 	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
-	font = ResourceManagers::GetInstance()->GetFont("arialbd");
-	m_Text_gameName1 = std::make_shared< Text>(shader, font, std::to_string(highScore), TEXT_COLOR::RED, 1.0);
-	m_Text_gameName1->Set2DPosition(Vector2(screenWidth / 2, 130));
-	m_Text_gameName.push_back(m_Text_gameName1);
-
-	//text game title highscore 1
-	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
-	font = ResourceManagers::GetInstance()->GetFont("arialbd");
-	m_Text_gameName1 = std::make_shared< Text>(shader, font, "2.", TEXT_COLOR::RED, 1.0);
-	m_Text_gameName1->Set2DPosition(Vector2(screenWidth / 2 - 120 , 180));
-	m_Text_gameName.push_back(m_Text_gameName1);
-
-	//text game title
-	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
-	font = ResourceManagers::GetInstance()->GetFont("arialbd");
-	m_Text_gameName1 = std::make_shared< Text>(shader, font, std::to_string(highScore1), TEXT_COLOR::RED, 1.0);
-	m_Text_gameName1->Set2DPosition(Vector2(screenWidth / 2 , 180));
-	m_Text_gameName.push_back(m_Text_gameName1);
-
-	//text game title highscore 1
-	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
-	font = ResourceManagers::GetInstance()->GetFont("arialbd");
-	m_Text_gameName1 = std::make_shared< Text>(shader, font, "3.", TEXT_COLOR::RED, 1.0);
-	m_Text_gameName1->Set2DPosition(Vector2(screenWidth / 2 - 120, 230));
-	m_Text_gameName.push_back(m_Text_gameName1);
-
-	//text game title
-	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
-	font = ResourceManagers::GetInstance()->GetFont("arialbd");
-	m_Text_gameName1 = std::make_shared< Text>(shader, font, std::to_string(highScore2), TEXT_COLOR::RED, 1.0);
-	m_Text_gameName1->Set2DPosition(Vector2(screenWidth / 2 , 230));
+	font = ResourceManagers::GetInstance()->GetFont("Adriana");
+	m_Text_gameName1 = std::make_shared< Text>(shader, font, std::to_string(highScore), TEXT_COLOR::RED, 2.0);
+	m_Text_gameName1->Set2DPosition(Vector2(screenWidth / 2 + 70, 130));
 	m_Text_gameName.push_back(m_Text_gameName1);
 
 	
